@@ -2,11 +2,11 @@
 // Register required libraries.
 use Joomla\Input\Input;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Factory;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\StringHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
+use \Factory;
+use \Helper\LayoutHelper;
+use \Helper\StringHelper;
+use \Messager;
+use \Text;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /* no direct script access */
@@ -59,7 +59,7 @@ $_POST['return'] = base64_encode( basename( $redirect->toString() ) );
 <?php switch (true) : ?>
 <?php // Render users list. ACTUALLY NEVER CATCHED!
 	case ($view->get('name') === 'users' && $view->get('layout') === 'list') :
-		if (!is_a($user, 'Nematrack\Entity\User')) :
+		if (!is_a($user, '\Entity\User')) :
 			sprintf('403 %s', Text::translate('COM_FTK_ERROR_APPLICATION_VIEW_ACCESS_DENIED_TEXT', $this->language));
 			exit;
 		endif;
@@ -152,10 +152,10 @@ $_POST['return'] = base64_encode( basename( $redirect->toString() ) );
 
 		// Get empty user object and attempt to log the user in.
 		// TODO - refactor to $view->getModel()->getInstance()
-		$user = $model->getInstance('user', ['language' => $lang])->getUserByCredentials($email, $password);	// result should be an instance of 'Nematrack\Entity\User' populated with data of the related user account
+		$user = $model->getInstance('user', ['language' => $lang])->getUserByCredentials($email, $password);	// result should be an instance of '\Entity\User' populated with data of the related user account
 
 		// User could not be found. Errors are set in class {@see User}
-		if (!is_a($user, 'Nematrack\Entity\User')) :
+		if (!is_a($user, '\Entity\User')) :
 			// Invalidate current session.
 			$session->clear();
 			$session->invalidate();
@@ -166,7 +166,7 @@ $_POST['return'] = base64_encode( basename( $redirect->toString() ) );
 			// Redirect to homepage.
 			header(sprintf('Location: index.php?hl=%s', $input->getWord('hl', Factory::getConfig()->get('app_language'))));
 			exit;
-		elseif (is_a($user, 'Nematrack\Entity\User') && !$user->isRegistered()) :
+		elseif (is_a($user, '\Entity\User') && !$user->isRegistered()) :
 			// Invalidate current session.
 			$session->clear();
 			$session->invalidate();
@@ -238,7 +238,7 @@ $_POST['return'] = base64_encode( basename( $redirect->toString() ) );
 
 			/* STEP 4:  Check if the user was found. */
 
-			if (!is_a($loginResult, 'Nematrack\Entity\User')) :
+			if (!is_a($loginResult, '\Entity\User')) :
 				Messager::setMessage([
 					'type' => 'error',
 					'text' => Text::translate('COM_FTK_ERROR_APPLICATION_USER_NOT_FOUND_TEXT', $this->language)
@@ -324,7 +324,7 @@ $_POST['return'] = base64_encode( basename( $redirect->toString() ) );
 ?>
 <?php // Logout link clicked. Check and redirect user to logout screen.
 	case ($view->get('name') === 'user' && $task === 'logout') :
-		if (is_a($user, 'Nematrack\Entity\User')) :
+		if (is_a($user, '\Entity\User')) :
 			$logout = $user->logout();	// Update user's last log out date column in database
 		endif;
 

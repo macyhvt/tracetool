@@ -1,18 +1,14 @@
 <?php
-// Register required libraries.
-use Joomla\Uri\Uri;
-use Nematrack\App;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Text;
+
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
 <?php /* Init vars */
 $lang  = $this->get('language');
 $view  = $this->__get('view');
-$input = (is_a($view, 'Nematrack\View') ? $view->get('input') : App::getInput());
-$model = (is_a($view, 'Nematrack\View') ? $view->get('model') : null);
-$user  = (is_a($view, 'Nematrack\View') ? $view->get('user')  : App::getAppUser());
+$input = (is_a($view, '\View') ? $view->get('input') : App::getInput());
+$model = (is_a($view, '\View') ? $view->get('model') : null);
+$user  = (is_a($view, '\View') ? $view->get('user')  : App::getAppUser());
 $uri   = new Uri($input->server->getUrl('REQUEST_URI')); $uri->delVar('hl');
 $query = $uri->getQuery();
 $root  = $this->get('root', 'index');   // refers to the root php-file (e.g. index.php, service.php, etc.)

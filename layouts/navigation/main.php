@@ -1,12 +1,5 @@
 <?php
-// Register required libraries.
-use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access\User;
-use Nematrack\Factory;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Text;
-use Nematrack\View;
+
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -19,40 +12,9 @@ $user   = $view->get('user');
 $userID = null;
 $orgID  = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
-	$userID = $user->get('userID');
-	$orgID  = $user->get('orgID');
-endif;
-
-/* Available user groups and what they should access
-USER_REGISTERED        - have account
-USER_GUEST             - >= USER_REGISTERED + login + guest rights (so far unspecified)
-USER_WORKER            - >= USER_REGISTERED + login
-USER_CUSTOMER          - >= USER_REGISTERED + login
-USER_SUPPLIER          - >= USER_REGISTERED + login
-USER_QUALITY_CONTROL   - >= USER_WORKER + Incoming goods inspection
-USER_MANAGER           - >= USER_WORKER + Master data management (FTK can manage all masterdata, Others can only manage own masterdata)
-USER_DRAWER            - >= USER_MANAGER + Create and upload article drawings
-USER_QUALITY_ASSURANCE - >= USER_WORKER + Edit trackings at any time + Grant access to tracking (Frequenzabbildung)
-USER_ADMINISTRATOR     - >= USER_MANAGER + Manage own users accounts
-USER_PROGRAMMER        - >= USER_ADMINISTRATOR + Full access, except for the superuser + manipulate source code
-USER_SUPERUSER         - ALL rights
-*/
 ?>
 
 <nav class="navbar navbar-expand-lg main" id="navbar-main">
-	<a href="<?php echo UriHelper::osSafe( UriHelper::fixURL( sprintf( 'index.php?hl=%s', $lang ))); ?>"
-	   class="navbar-brand p-0"
-	   title="<?php echo Text::translate('COM_FTK_MENU_ITEM_HOME_DESC', $lang); ?>"
-	>
-		<img src="<?php echo UriHelper::osSafe( UriHelper::fixURL( '/assets/img/global/logos/froetek-logo.png' ) ); ?>"
-			 alt="<?php echo sprintf('%s: %s', 'Logo', Factory::getConfig()->get('app_author')); ?>"
-			 width=""
-			 height=""
-			 title="<?php echo Text::translate('COM_FTK_MENU_ITEM_HOME_DESC', $lang); ?>"
-		/>
-		<span class="sr-only"><?php echo Factory::getConfig()->get('app_author'); ?></span>
-	</a>
 
 	<?php // TODO - implement language key toggle depending on whether this menu is shown or hidden ?>
 	<?php if ($menu) : ?>
@@ -107,10 +69,10 @@ USER_SUPERUSER         - ALL rights
 					</li>
 					<?php endif; ?>
 
-					<?php /* M A N U F A C T U R E R S   FRÖTEK only + privileged users only */ ?>
-					<?php /* E Q U I P M E N T   FRÖTEK only + privileged users only */ ?>
+					<?php /* M A N U F A C T U R E R S    only + privileged users only */ ?>
+					<?php /* E Q U I P M E N T    only + privileged users only */ ?>
 
-					<?php // FRÖTEK + NEMATECH only + high privileged users only ?>
+					<?php //  +  only + high privileged users only ?>
 					<?php if (FALSE && $orgID == '1' && is_object($user) && $user->getFlags() >= User::ROLE_PROGRAMMER) : // NO LONGER accessable ?>
 					<li class="nav-item nav-sub-item text-left py-2 small" id="nav-sub-item-masterdata-users"><?php // link to users ?>
 						<a href="<?php echo View::getInstance('users', ['language' => $lang])->getRoute(); ?>"
@@ -142,8 +104,8 @@ USER_SUPERUSER         - ALL rights
 					</li>
 					<?php endif; ?>
 
-					<?php // FRÖTEK + NEMATECH only + high privileged users only ?>
-					<?php if (is_object($user) && $user->getFlags() >= User::ROLE_WORKER && UserHelper::isFroetekOrNematechMember($user)) : // Management is granted to privileged FRÖTEK- and NEMATECH-users only ?>
+					<?php  only + high privileged users only ?>
+					<?php if (is_object($user) && $user->getFlags() >= User::ROLE_WORKER && UserHelper::isFroetekOrNematechMember($user)) : // Management is granted to privileged - and -users only ?>
 					<li class="nav-item nav-sub-item text-left py-2 small" id="nav-sub-item-masterdata-processes"><?php // link to processes ?>
 						<a href="<?php echo View::getInstance('processes', ['language' => $lang])->getRoute(); ?>"
 						   class="dropdown-item<?php //echo $view->get('name') === 'processes' ? ' active' : ''; ?>"
@@ -151,7 +113,7 @@ USER_SUPERUSER         - ALL rights
 						><?php echo Text::translate('COM_FTK_MENU_ITEM_PROCESSES_LABEL', $lang); ?></a>
 					</li>
 					<?php endif; ?>
-                    <?php // FRÖTEK + NEMATECH only + high privileged users only ?>
+                    <?php //  +  only + high privileged users only ?>
                     <?php if (is_object($user) && $user->getFlags() >= User::ROLE_WORKER && UserHelper::isFroetekOrNematechMember($user)) : ?>
                         <li class="nav-item nav-sub-item text-left py-2 small" id="nav-sub-item-masterdata-maingroups"><?php // link to processes ?>
                             <a href="<?php echo UriHelper::osSafe( UriHelper::fixURL( sprintf( 'index.php?hl=%s&view=maingroups&layout=list', $lang ))); ?>"
@@ -175,8 +137,8 @@ USER_SUPERUSER         - ALL rights
 			<?php endif; ?>
 
 			<?php /*   A D M I N I S T R A T I O N   */ ?>
-			<?php // FRÖTEK + high privileged users only ?>
-			<?php if (is_object($user) && $user->getFlags() >= User::ROLE_MANAGER && in_array($orgID, [1])) :	// Management is granted to privileged FRÖTEK-users only ?>
+			<?php //  + high privileged users only ?>
+			<?php if (is_object($user) && $user->getFlags() >= User::ROLE_MANAGER && in_array($orgID, [1])) :	// Management is granted to privileged -users only ?>
 			<li class="nav-item dropdown px-sm-2" id="nav-item-administration">
 				<a href="javascript:void(0)"
 				   class="nav-link dropdown-toggle"
@@ -189,8 +151,8 @@ USER_SUPERUSER         - ALL rights
 				   role="button"
 				><?php echo Text::translate('COM_FTK_MENU_ITEM_ADMINISTRATION_LABEL', $lang); ?></a>
 				<ul class="nav-sub dropdown-menu border-0 pt-0 pb-2 jumbotron-fluid" aria-labelledby="navbarDropdownMenu-administration">
-					<?php // FRÖTEK only + high privileged users only ?>
-					<?php if (is_object($user) && $user->getFlags() >= User::ROLE_QUALITY_ASSURANCE) : // Reporting back is granted to high privileged FRÖTEK-users only ?>
+					<?php //  only + high privileged users only ?>
+					<?php if (is_object($user) && $user->getFlags() >= User::ROLE_QUALITY_ASSURANCE) : // Reporting back is granted to high privileged -users only ?>
 					<li class="nav-item nav-sub-item text-left py-2 small" id="nav-sub-item-administration-parts-unbooked">
 						<a href="<?php echo UriHelper::osSafe( UriHelper::fixURL( sprintf( 'index.php?hl=%s&view=parts&layout=unbooked', $lang ))); ?>"
 						   class="dropdown-item<?php echo ($view->get('name') === 'parts' && $this->get('name') === 'unbooked') ? ' active' : ''; ?>"

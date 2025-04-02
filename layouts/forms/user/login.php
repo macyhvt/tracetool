@@ -3,11 +3,11 @@
 use Joomla\Input\Input;
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Helper\StringHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Messager;
-use Nematrack\Model;
-use Nematrack\Text;
+use \Helper\StringHelper;
+use \Helper\UriHelper;
+use \Messager;
+use \Model;
+use \Text;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /* no direct script access */
@@ -114,7 +114,7 @@ endif;
 
 		<img src="<?php echo UriHelper::osSafe('/assets/img/global/logos/froetek-logo.png'); ?>"
 			 class="mb-4 mb-3 mb-lg-4 img-ftk-shadow"
-			 alt="Logo: FRÖTEK"
+			 alt="Logo: "
 			 width=""
 			 height=""
 		>
