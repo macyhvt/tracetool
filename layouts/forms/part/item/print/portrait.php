@@ -3,15 +3,15 @@
 // use Joomla\Registry\Registry;
 // use Joomla\Uri\Uri;
 // use Joomla\Utilities\ArrayHelper;
-// use Nematrack\Helper\LayoutHelper;
-// use Nematrack\Helper\UriHelper;
-use Nematrack\Text;
-// use Nematrack\View;
+// use  \Helper\LayoutHelper;
+// use  \Helper\UriHelper;
+use  \Text;
+// use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
 
-<?php if (is_a($item, 'Nematrack\Entity\Part')) : ?>
+<?php if (is_a($item, ' \Entity\Part')) : ?>
 <?php /* Load view data */
 $codeGenerator = new \Froetek\Coder\Barcoder;
 ?>

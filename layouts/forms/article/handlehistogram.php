@@ -3,11 +3,11 @@
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\StringHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Model;
-use Nematrack\Text;
+use  \Helper\LayoutHelper;
+use  \Helper\StringHelper;
+use  \Helper\UriHelper;
+use  \Model;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>

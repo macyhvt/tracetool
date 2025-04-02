@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -12,13 +12,13 @@ use InvalidArgumentException;
 use Joomla\Filter\InputFilter;
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\App;
-use Nematrack\Entity;
-use Nematrack\Helper\DatabaseHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Item as ItemModel;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \App;
+use  \Entity;
+use  \Helper\DatabaseHelper;
+use  \Messager;
+use  \Model\Item as ItemModel;
+use  \Model\Lizt as ListModel;
+use  \Text;
 use function array_diff;
 use function array_filter;
 use function array_key_exists;
@@ -183,9 +183,9 @@ class Process extends ItemModel
 
 		$className = basename(str_replace('\\', '/', __CLASS__));
 
-		$row = (is_a($itemID, sprintf('Nematrack\Entity\%s', $className))
+		$row = (is_a($itemID, sprintf(' \Entity\%s', $className))
 			? $itemID
-			: (is_a($row, sprintf('Nematrack\Entity\%s', $className))
+			: (is_a($row, sprintf(' \Entity\%s', $className))
 				? $row
 				: (is_array($row)
 					? Entity::getInstance($className, ['id' => $itemID, 'language' => $this->get('language')])->bind($row)
@@ -205,7 +205,7 @@ class Process extends ItemModel
 	{
 		echo (FTK_PROFILING) ? '<pre style="color:crimson">' . print_r(__METHOD__ . '()', true) . '</pre>' : null;
 
-		if (is_a($processAbbreviation, 'Nematrack\Entity\Process'))
+		if (is_a($processAbbreviation, ' \Entity\Process'))
 		{
 			$process = $processAbbreviation;
 		}
@@ -255,7 +255,7 @@ class Process extends ItemModel
 	{
 		echo (FTK_PROFILING) ? '<pre style="color:crimson">' . print_r(__METHOD__ . '()', true) . '</pre>' : null;
 
-		if (is_a($processName, 'Nematrack\Entity\Process'))
+		if (is_a($processName, ' \Entity\Process'))
 		{
 			$process = $processName;
 		}
@@ -554,7 +554,7 @@ class Process extends ItemModel
 		if ($tmpProcess = $this->getProcessByName(ArrayHelper::getValue($formData, 'name'), ArrayHelper::getValue($formData, 'lngID')))
 		{
 			// Compare both IDs. If they're different, then another item already uses the name this item shall use, which is not allowed.
-			if (\is_a($tmpProcess, 'Nematrack\Entity\Process')
+			if (\is_a($tmpProcess, ' \Entity\Process')
 			&& \is_int($tmpProcess->get('procID'))
 			&& ($tmpProcess->get('procID') != ArrayHelper::getValue($formData, 'pid'))
 			) {
@@ -581,7 +581,7 @@ class Process extends ItemModel
 		if (isset($thisProcess) && isset($thatProcess))
 		{
 			// No conflict - No other process found.
-			if (!is_a($thatProcess, 'Nematrack\Entity\Process'))
+			if (!is_a($thatProcess, ' \Entity\Process'))
 			{
 				// Free memory.
 				unset($thatProcess);
@@ -777,7 +777,7 @@ class Process extends ItemModel
 		// Load item from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($procID);
 
-		if (!is_a($item, 'Nematrack\Entity\Process') || !$item->get('procID'))
+		if (!is_a($item, ' \Entity\Process') || !$item->get('procID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -863,7 +863,7 @@ class Process extends ItemModel
 		// Load item from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($procID);
 
-		if (!is_a($item, 'Nematrack\Entity\Process') || !$item->get('procID'))
+		if (!is_a($item, ' \Entity\Process') || !$item->get('procID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -948,7 +948,7 @@ class Process extends ItemModel
 		// Load process from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($procID);
 
-		if (!is_a($item, 'Nematrack\Entity\Process') || !$item->get('procID'))
+		if (!is_a($item, ' \Entity\Process') || !$item->get('procID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1034,7 +1034,7 @@ class Process extends ItemModel
 		// Load process from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($procID);
 
-		if (!is_a($item, 'Nematrack\Entity\Process') || !$item->get('procID'))
+		if (!is_a($item, ' \Entity\Process') || !$item->get('procID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1119,7 +1119,7 @@ class Process extends ItemModel
 		// Load process from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($procID);
 
-		if (!is_a($item, 'Nematrack\Entity\Process') || !$item->get('procID'))
+		if (!is_a($item, ' \Entity\Process') || !$item->get('procID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1226,7 +1226,7 @@ class Process extends ItemModel
 		// Load process from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($procID);
 
-		if (!is_a($item, 'Nematrack\Entity\Process') || !$item->get('procID'))
+		if (!is_a($item, ' \Entity\Process') || !$item->get('procID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',

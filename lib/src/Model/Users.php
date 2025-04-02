@@ -1,17 +1,17 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Exception;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access;
-use Nematrack\App;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Access;
+use  \App;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
 use function is_a;
 use function is_null;
 
@@ -95,7 +95,7 @@ class Users extends ListModel
 		]);
 
 		/*// Only users with higher privileges must be allowed to see blocked items.
-		if (!\is_a($user, 'Nematrack\Entity\User') || (\is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+		if (!\is_a($user, ' \Entity\User') || (\is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
 		{
 			$query
 			->where('u.blocked = ' . $db->q('0'));
@@ -114,10 +114,10 @@ class Users extends ListModel
 
 		// Hide Testuser (required for automated testing) from users list
 		// if users list is requested by non-developers and not Tino!
-		if (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER))
+		if (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER))
 		{
 			$query
-			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@nematrack.com')) // super user
+			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@ .com')) // super user
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%example.com'))     // test account(s)
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%brackebusch%'))    // programmer
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%test%'))           // automated testing user
@@ -238,7 +238,7 @@ class Users extends ListModel
 		// ->where($db->qn('om.language') . ' = ' . $db->q($this->language));
 
 		/*// Only users with higher privileges must be allowed to see blocked items.
-		if (!\is_a($user, 'Nematrack\Entity\User') || (\is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+		if (!\is_a($user, ' \Entity\User') || (\is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
 		{
 			$query
 			->where('u.blocked = ' . $db->q('0'));
@@ -254,18 +254,18 @@ class Users extends ListModel
 				->orWhere($db->qn('u.trashed') . ' IN(' . implode(',', ['0','1']) . ')');
 			break;
 
-			/*// case in_array(\Nematrack\Model\Lizt::FILTER_DELETED, $filter) :
-			case ($filter === \Nematrack\Model\Lizt::FILTER_DELETED) :
+			/*// case in_array(\ \Model\Lizt::FILTER_DELETED, $filter) :
+			case ($filter === \ \Model\Lizt::FILTER_DELETED) :
 				$query->where($db->qn('u.trashed')  . ' = ' . $db->q('1'));
 			break; */
 
-			// case in_array(\Nematrack\Model\Lizt::FILTER_ARCHIVED, $filter) :
+			// case in_array(\ \Model\Lizt::FILTER_ARCHIVED, $filter) :
 			case ($filter === Lizt::FILTER_ARCHIVED) :
 				// $query->where($db->qn('u.archived') . ' = ' . $db->q('1'));
 				$query->where($db->qn('u.blocked')  . ' = ' . $db->q('1'));
 			break;
 
-			// case in_array(\Nematrack\Model\Lizt::FILTER_LOCKED, $filter) :
+			// case in_array(\ \Model\Lizt::FILTER_LOCKED, $filter) :
 			case ($filter === Lizt::FILTER_LOCKED) :
 				$query->where($db->qn('u.blocked')  . ' = ' . $db->q('1'));
 			break;
@@ -290,10 +290,10 @@ class Users extends ListModel
 
 		// Hide Testuser (required for automated testing) from users list
 		// if users list is requested by non-developers and not Tino!
-		if (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER))
+		if (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER))
 		{
 			$query
-			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@nematrack.com')) // super user
+			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@ .com')) // super user
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%example.com'))     // test account(s)
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%brackebusch%'))    // programmer
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%test%'))           // automated testing user

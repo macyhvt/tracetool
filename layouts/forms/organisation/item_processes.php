@@ -1,11 +1,11 @@
 <?php
 // Register required libraries.
 use Joomla\Uri\Uri;
-use Nematrack\Access\User;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Access\User;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>

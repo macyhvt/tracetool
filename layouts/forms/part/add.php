@@ -3,10 +3,10 @@
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -25,7 +25,7 @@ $pid    = $input->getInt('pid');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');

@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -9,14 +9,14 @@ use Exception;
 use Joomla\Image\Image as JImage;	// \Joomla\Image\Image is @deprecated and discontinued
 use Joomla\Utilities\ArrayHelper;
 use LogicException;
-use Nematrack\App;
-use Nematrack\Entity\Image;	// \Joomla\Image\Image is @deprecated and discontinued
-use Nematrack\Helper\FilesystemHelper;
-use Nematrack\Helper\MediaHelper;
-use Nematrack\Messager;
-use Nematrack\Model;
-use Nematrack\Text;
-use Nematrack\Utility\Math;
+use  \App;
+use  \Entity\Image;	// \Joomla\Image\Image is @deprecated and discontinued
+use  \Helper\FilesystemHelper;
+use  \Helper\MediaHelper;
+use  \Messager;
+use  \Model;
+use  \Text;
+use  \Utility\Math;
 use RuntimeException;
 use Symfony\Component\Validator\Constraints\Image as ImageValidator;
 use Symfony\Component\Validator\Validation;
@@ -54,7 +54,7 @@ class Tools extends Model
 	 * @uses   {@link Validation}
 	 *
 	 * called in:
-	 *  \Nematrack\View\Tools
+	 *  \ \View\Tools
 	 */
 	public function batchUploadProcessImages(): array
 	{
@@ -151,7 +151,7 @@ class Tools extends Model
 			'opacity'         => 110,    // The transparency level. A value between  0 and 127.   0 indicates completely opaque while 127 indicates completely transparent.
 			'imageQuality'    => 90,     // The compression level.  A value between 70 and 100. 100 indicates no compression while 70 is lower boundary for acceptable quality.
 			'thumbsQuality'   => 80,     // The compression level.  A value between 70 and 100. 100 indicates no compression while 70 is lower boundary for acceptable quality.
-			'watermark'       => sprintf('Copyright %d nematrack.com. All rights reserved.', date('Y')),
+			'watermark'       => sprintf('Copyright %d  .com. All rights reserved.', date('Y')),
 			'maxFileSize'     => FTKRULE_UPLOAD_MAX_SIZE ?? ini_get('upload_max_filesize'), // 52428800 B => 50 MB
 			'dimension'       => [
 				'16:9' => [
@@ -205,7 +205,7 @@ class Tools extends Model
 			endif;*/
 
 			// If no part is no part entity then most likely the code is bad (typo).
-			if (!is_a($part, 'Nematrack\Entity\Part'))
+			if (!is_a($part, ' \Entity\Part'))
 			{
 				$failed[] = $fileName; continue;
 			}

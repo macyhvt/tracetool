@@ -3,18 +3,18 @@
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access\User;
-use Nematrack\Entity\Process;
-use Nematrack\Helper\FilesystemHelper;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\MediaHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Model\Techparams;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Access\User;
+use  \Entity\Process;
+use  \Helper\FilesystemHelper;
+use  \Helper\LayoutHelper;
+use  \Helper\MediaHelper;
+use  \Helper\UriHelper;
+use  \Helper\UserHelper;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Model\Techparams;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -80,7 +80,7 @@ endif;
 */
 ?>
 <?php /* Access check */
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -220,7 +220,7 @@ die('good2go');*/
 $item = $view->get('item');
 
 // Block the attempt to open a non-existing part.
-if (!is_a($item, 'Nematrack\Entity\Part') || (is_a($item, 'Nematrack\Entity\Part') && is_null($item->get('partID')))) :
+if (!is_a($item, ' \Entity\Part') || (is_a($item, ' \Entity\Part') && is_null($item->get('partID')))) :
     Messager::setMessage([
         'type' => 'notice',
         'text' => sprintf(Text::translate('COM_FTK_HINT_PART_HAVING_ID_X_NOT_FOUND_TEXT', $this->language), $ptid)
@@ -428,7 +428,7 @@ endif;
 $staticTechParams = (array) $model->getInstance('techparams', ['language' => $lang])->getStaticTechnicalParameters(true);
 
 // Get error catalogue for this part's processes.
-// TODO - move to \Nematrack\View\Part::prepareDocument()
+// TODO - move to \ \View\Part::prepareDocument()
 $errors   = $model->getInstance('errors', ['language' => $lang])->getErrorsByLanguage(
 	(new Registry($model->getInstance('language', ['language' => $lang])->getLanguageByTag($this->language)))->get('lngID'),
 	$itemProcessIDs
@@ -1264,7 +1264,7 @@ fieldset.part-process-tracking:focus {
 						$helpFilePath = 'javascript:void(-1)" onclick="alert(&quot;' . Text::translate('COM_FTK_HINT_FILE_NOT_FOUND_TEXT', $lang) . '&quot;)';
 
 						// On mobile devices append link to mobile upload guide to popup window title.
-						if (is_a($helpFile, '\Nematrack\Entity\Document') && $helpFile->get('path')) :
+						if (is_a($helpFile, '\ \Entity\Document') && $helpFile->get('path')) :
 
 							$helpFilePath = FilesystemHelper::relPath($helpFile->get('path'));
 							$modalTitle   = !$this->view->get('browser')->get('ismobiledevice') ? $modalTitle : htmlentities($modalTitle .

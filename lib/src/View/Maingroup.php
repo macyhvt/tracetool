@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -8,11 +8,11 @@ defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Helper\DatabaseHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View;
-use Nematrack\View\Item as ItemView;
+use  \Helper\DatabaseHelper;
+use  \Messager;
+use  \Text;
+use  \View;
+use  \View\Item as ItemView;
 use function array_combine;
 use function array_diff;
 use function array_fill;
@@ -29,7 +29,7 @@ use function property_exists;
  */
 class Maingroup extends ItemView
 {
-	use \Nematrack\Traits\View\Maingroup;
+	use \ \Traits\View\Maingroup;
 
 	/**
 	 * {@inheritdoc}

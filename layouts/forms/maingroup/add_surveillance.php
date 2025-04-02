@@ -1,7 +1,7 @@
 <?php
 // Register required libraries.
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Text;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>

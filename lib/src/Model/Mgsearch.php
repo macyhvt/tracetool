@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -8,12 +8,12 @@ use DateTime;
 use DateTimeZone;
 use Exception;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access;
-use Nematrack\App;
-use Nematrack\Entity;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Access;
+use  \App;
+use  \Entity;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
 use Symfony\Component\String\Inflector\EnglishInflector as StringInflector;
 use function array_key_exists;
 use function array_map;
@@ -394,7 +394,7 @@ class Mgsearch extends ListModel
 		);
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+		if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
 		{
 			$query
 			->where($db->qn('p.blocked') . ' = ' . $db->q('0'));

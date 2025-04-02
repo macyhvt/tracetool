@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack;
+namespace  ;
 
 /* no direct script access */
 defined('_FTK_APP_') or die('403 FORBIDDEN');
@@ -11,7 +11,7 @@ use Exception;
 use Joomla\Input\Input;
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Helper\FilesystemHelper;
+use  \Helper\FilesystemHelper;
 use RuntimeException;
 use stdClass;
 use Symfony\Component\Dotenv\Dotenv;
@@ -413,7 +413,7 @@ abstract class App
 	public static function isDevEnv() : bool
 	{
 		return in_array($_SERVER['HTTP_HOST'], [
-			'dev.nematrack.com',
+			'dev. .com',
 			'webservice.froetek.website'
 		]);
 	}

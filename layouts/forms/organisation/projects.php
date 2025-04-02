@@ -1,10 +1,10 @@
 <?php
 // Register required libraries.
 use Joomla\Registry\Registry;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Model\Lizt as ListModel;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -22,7 +22,7 @@ $filter = $input->getString('filter', (string) ListModel::FILTER_ACTIVE);
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -120,7 +120,7 @@ endif;
 
 	<?php /* List filter */ ?>
 	<?php // TODO - make this a HTML widget (don't forget the above CSS) and replace this code ?>
-	<?php //if ($this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?>
+	<?php //if ($this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?>
 	<form action="<?php echo UriHelper::osSafe( UriHelper::fixURL( $view->getRoute() ) ); ?>"
 		  method="get"
 		  class="form <?php echo ($formName = sprintf('%sForm', mb_strtolower($view->get('name')))); ?> d-inline-block"
@@ -238,10 +238,10 @@ endif;
 				<th scope="col" class="text-center"><?php echo ucfirst(Text::translate('COM_FTK_LABEL_STATUS_TEXT', $this->language)); ?></th>
 				<th scope="col"><?php echo ucfirst(Text::translate('COM_FTK_LABEL_PROJECT_TEXT', $this->language)); ?></th>
 				<th scope="col" class="d-none d-lg-table-cell"><?php echo ucfirst(Text::translate('COM_FTK_LABEL_NAME_TEXT', $this->language)); ?></th>
-				<?php if ($this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?><th scope="col"><?php echo ucfirst(Text::translate('COM_FTK_LABEL_ROLE_TEXT', $this->language)); ?></th><?php endif; ?>
+				<?php if ($this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?><th scope="col"><?php echo ucfirst(Text::translate('COM_FTK_LABEL_ROLE_TEXT', $this->language)); ?></th><?php endif; ?>
 				<th scope="col"><?php echo ucfirst(Text::translate('COM_FTK_LABEL_CREATED_TEXT', $this->language)); ?></th>
 				<th scope="col"><?php echo ucfirst(Text::translate('COM_FTK_LABEL_CLOSED_TEXT', $this->language)); ?></th>
-				<?php if (FALSE && $this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?><th scope="col"></th><?php endif; ?>
+				<?php if (FALSE && $this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?><th scope="col"></th><?php endif; ?>
 			</tr>
 		</thead>
 		<tbody>
@@ -294,7 +294,7 @@ endif;
 					</span>
 				</td>
 				<td>
-					<?php //if ($this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?>
+					<?php //if ($this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?>
 					<?php if (!$this->user->isGuest() && !$this->user->isCustomer() && !$this->user->isSupplier()) : ?>
 					<a href="<?php echo UriHelper::osSafe( UriHelper::fixURL(sprintf( 'index.php?hl=%s&view=project&layout=item&proid=%d', $this->language, $project->get('proID') ))); ?>"
 
@@ -309,7 +309,7 @@ endif;
 					<?php endif; ?>
 				</td>
 				<td class="d-none d-lg-table-cell">
-					<?php //if ($this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?>
+					<?php //if ($this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?>
 					<?php if (!$this->user->isGuest() && !$this->user->isCustomer() && !$this->user->isSupplier()) : ?>
 					<a href="<?php echo UriHelper::osSafe( UriHelper::fixURL(sprintf( 'index.php?hl=%s&view=project&layout=item&proid=%d', $this->language, $project->get('proID') ))); ?>"
 
@@ -322,16 +322,16 @@ endif;
 					<span><?php echo html_entity_decode($project->get('name')); ?></span>
 					<?php endif; ?>
 				</td>
-				<?php if ($this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?><td><?php echo html_entity_decode($project->get('role')); ?></td><?php endif; ?>
+				<?php if ($this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?><td><?php echo html_entity_decode($project->get('role')); ?></td><?php endif; ?>
 				<td><?php echo is_null($created) ? '&ndash;' : (new \DateTime($created, new \DateTimeZone(FTKRULE_TIMEZONE)))->format('Y-m-d'); ?></td>
 				<td><?php echo !$project->get('archived') ? '&ndash;' : (new \DateTime($project->get('archiveDate'), new \DateTimeZone(FTKRULE_TIMEZONE)))->format('Y-m-d'); ?></td>
-				<?php if (FALSE && $this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?><td class="text-right"></td><?php endif; ?>
+				<?php if (FALSE && $this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?><td class="text-right"></td><?php endif; ?>
 			</tr>
 		<?php $i += 1; endforeach; ?>
 		</tbody>
 	</table>
 	<?php else : ?>
-		<?php if ($this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?>
+		<?php if ($this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?>
 			<?php echo LayoutHelper::render('system.alert.info', [
 				'message' => Text::translate('COM_FTK_HINT_ORGANISATION_HAS_NO_PROJECTS_TEXT', $this->language),
 				'attribs' => [

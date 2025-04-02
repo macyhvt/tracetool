@@ -3,18 +3,18 @@
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access\User;
-use Nematrack\Entity\Process;
-use Nematrack\Helper\FilesystemHelper;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\MediaHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Model\Techparams;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Access\User;
+use  \Entity\Process;
+use  \Helper\FilesystemHelper;
+use  \Helper\LayoutHelper;
+use  \Helper\MediaHelper;
+use  \Helper\UriHelper;
+use  \Helper\UserHelper;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Model\Techparams;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -47,7 +47,7 @@ $isApproval = $task === 'approve';	// ADDED on 2023-07-20
 ?>
 
 <?php /* Access check */
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -72,7 +72,7 @@ endif;
 $item = $view->get('item');
 
 // Block the attempt to open a non-existing part.
-if (!is_a($item, 'Nematrack\Entity\Part') || (is_a($item, 'Nematrack\Entity\Part') && is_null($item->get('partID')))) :
+if (!is_a($item, ' \Entity\Part') || (is_a($item, ' \Entity\Part') && is_null($item->get('partID')))) :
     Messager::setMessage([
         'type' => 'notice',
         'text' => sprintf(Text::translate('COM_FTK_HINT_PART_HAVING_ID_X_NOT_FOUND_TEXT', $this->language), $item->get('partID'))
@@ -173,7 +173,7 @@ endif;
 $staticTechParams = (array) $model->getInstance('techparams', ['language' => $lang])->getStaticTechnicalParameters(true);
 
 // Retrieve the error catalogue for all processes that this part has to run through.
-/*// CHANGED on 2023-11-17 - moved to \Nematrack\View\Part::prepareErrorList()
+/*// CHANGED on 2023-11-17 - moved to \ \View\Part::prepareErrorList()
 $errors   = $model->getInstance('errors', ['language' => $lang])->getErrorsByLanguage(
 	(new Registry($model->getInstance('language', ['language' => $lang])->getLanguageByTag($this->language)))->get('lngID'),
 	$itemProcessIDs

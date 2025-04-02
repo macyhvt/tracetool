@@ -1,18 +1,18 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
-use Nematrack\View\Lizt as ListView;
+use  \View\Lizt as ListView;
 
 /**
  * Class description
  */
 class Contacts extends ListView
 {
-	use \Nematrack\Traits\View\Articles;
+	use \ \Traits\View\Articles;
 
 	/**
 	 * {@inheritdoc}

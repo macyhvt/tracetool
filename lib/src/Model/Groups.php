@@ -1,17 +1,17 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Exception;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access;
-use Nematrack\App;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Access;
+use  \App;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
 use function array_key_exists;
 use function array_map;
 use function is_a;
@@ -80,7 +80,7 @@ class Groups extends ListModel
 		// NOTE:  When a guest user logs in, there is no user in Session.
 		//        The user being logged in is read from the database identified by its login credentials
 		//        and it's groups must be loaded to be assigned. Thus, the query must not be limited.
-		if (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_SUPERUSER))
+		if (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_SUPERUSER))
 		{
 			$sub = $db->getQuery(true)
 			->select('MAX(' . $db->qn('groupID') . ')')

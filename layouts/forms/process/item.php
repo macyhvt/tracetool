@@ -1,13 +1,13 @@
 <?php
 // Register required libraries.
 use Joomla\Uri\Uri;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Helper\UserHelper;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -26,7 +26,7 @@ $pid    = $input->getInt('pid');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
     try
     {
         $formData = $user->__get('formData');
@@ -47,7 +47,7 @@ $canDelete = true;
 $item = $view->get('item');
 
 // Block the attempt to open a non-existing process.
-if (!is_a($item, 'Nematrack\Entity\Process') || (is_a($item, 'Nematrack\Entity\Process') && is_null($item->get('procID')))) :
+if (!is_a($item, ' \Entity\Process') || (is_a($item, ' \Entity\Process') && is_null($item->get('procID')))) :
     Messager::setMessage([
         'type' => 'notice',
         'text' => sprintf(Text::translate('COM_FTK_HINT_PROCESS_HAVING_ID_X_NOT_FOUND_TEXT', $this->language), $pid)
@@ -217,7 +217,7 @@ $this->itemOrganisations = (array) $this->item->get('organisations');
 
 
 			<?php if (!$this->isArchived && !$this->isBlocked && !$this->isDeleted) : ?>
-			<?php 	if (UserHelper::isFroetekOrNematechMember($user) && $user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : // Editing is granted to privileged FRÖTEK- and NEMATECH-users only ?>
+			<?php 	if (UserHelper::isFroetekOrNematechMember($user) && $user->getFlags() >= \ \Access\User::ROLE_MANAGER) : // Editing is granted to privileged FRÖTEK- and NEMATECH-users only ?>
 			<?php // E D I T - button ?>
 			<div class="d-inline-block align-top">
 				<div class="input-group">
@@ -275,7 +275,7 @@ $this->itemOrganisations = (array) $this->item->get('organisations');
 			</div>
 
 			<?php /*   T O O L B A R   */ ?>
-			<?php if (UserHelper::isFroetekOrNematechMember($user) && $user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : // Management is granted to privileged FRÖTEK- and NEMATECH-users only ?>
+			<?php if (UserHelper::isFroetekOrNematechMember($user) && $user->getFlags() >= \ \Access\User::ROLE_MANAGER) : // Management is granted to privileged FRÖTEK- and NEMATECH-users only ?>
 			<div class="position-absolute" style="z-index:1; top:0; right:0; padding-right:15px">
 				<div class="align-middle text-right">
 					<?php // (U N) B L O C K - button ?>
@@ -318,7 +318,7 @@ $this->itemOrganisations = (array) $this->item->get('organisations');
 					<?php endif; // END: ACL-Check ?>
 
 					<?php // (U N) A R C H I V A T E - button ?>
-					<?php if (FALSE && $user->getFlags() >= \Nematrack\Access\User::ROLE_ADMINISTRATOR) : // (Un)Publishing is granted to higher privileged users only ?>
+					<?php if (FALSE && $user->getFlags() >= \ \Access\User::ROLE_ADMINISTRATOR) : // (Un)Publishing is granted to higher privileged users only ?>
 					<?php	if (!$this->isDeleted) : ?>
 					<form action="<?php echo View::getInstance('processes', ['language' => $this->language])->getRoute(); ?>"
 						  method="post"
@@ -363,7 +363,7 @@ $this->itemOrganisations = (array) $this->item->get('organisations');
 					<?php endif; // END: ACL-Check ?>
 
 					<?php // (U N) D E L E T E - button ?>
-					<?php if ($user->getFlags() >= \Nematrack\Access\User::ROLE_ADMINISTRATOR) : // (Un)Deleting is granted to higher privileged users only ?>
+					<?php if ($user->getFlags() >= \ \Access\User::ROLE_ADMINISTRATOR) : // (Un)Deleting is granted to higher privileged users only ?>
 					<form action="<?php echo View::getInstance('processes', ['language' => $this->language])->getRoute(); ?>"
 						  method="post"
 						  name="<?php echo sprintf('delete%sForm', ucfirst($view->get('name'))); ?>"
@@ -415,7 +415,7 @@ $this->itemOrganisations = (array) $this->item->get('organisations');
 
     <hr>
 
-	<?php if ($user->getFlags() >= \Nematrack\Access\User::ROLE_WORKER) : ?>
+	<?php if ($user->getFlags() >= \ \Access\User::ROLE_WORKER) : ?>
 		<?php if (!$this->item->get('error_catalog') || (is_countable($catalog = (array) $this->item->get('error_catalog'))) && empty($catalog)) : ?>
 			<?php echo LayoutHelper::render('system.alert.danger', [
 				'message' => Text::translate('COM_FTK_ERROR_APPLICATION_PROCESS_HAS_NO_ERROR_CATALOGUE_TEXT', $this->language),
@@ -426,7 +426,7 @@ $this->itemOrganisations = (array) $this->item->get('organisations');
 		<?php endif; ?>
 	<?php endif; ?>
 
-	<?php if ($user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?>
+	<?php if ($user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?>
 		<?php if ($this->get('incomplete') && is_countable($untranslated = (array) $this->item->get('incomplete')->get('translation'))) : ?>
 			<?php foreach ($untranslated as $property => $this->languageuages) : ?>
 				<?php echo LayoutHelper::render('system.alert.notice', [

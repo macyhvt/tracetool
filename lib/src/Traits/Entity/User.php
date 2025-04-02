@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Traits\Entity;
+namespace  \Traits\Entity;
 
 /* no direct script access */
 defined('_FTK_APP_') or die('403 FORBIDDEN');

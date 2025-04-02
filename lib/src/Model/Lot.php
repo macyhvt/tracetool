@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -9,13 +9,13 @@ use DateTime;
 use DateTimeZone;
 use Exception;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access;
-use Nematrack\App;
-use Nematrack\Crypto;
-use Nematrack\Entity;
-use Nematrack\Messager;
-use Nematrack\Model\Item as ItemModel;
-use Nematrack\Text;
+use  \Access;
+use  \App;
+use  \Crypto;
+use  \Entity;
+use  \Messager;
+use  \Model\Item as ItemModel;
+use  \Text;
 use function is_a;
 use function is_array;
 
@@ -45,7 +45,7 @@ class Lot extends ItemModel
 	 *
 	 * @param   int $itemID
 	 *
-	 * @return  \Nematrack\Entity\Lot
+	 * @return  \ \Entity\Lot
 	 */
 	public function getItem(int $itemID) : Entity\Lot
 	{
@@ -63,9 +63,9 @@ class Lot extends ItemModel
 
 		$className = basename(str_replace('\\', '/', __CLASS__));
 
-		$row = (is_a($itemID, sprintf('Nematrack\Entity\%s', $className))
+		$row = (is_a($itemID, sprintf(' \Entity\%s', $className))
 			? $itemID
-			: (is_a($row, sprintf('Nematrack\Entity\%s', $className))
+			: (is_a($row, sprintf(' \Entity\%s', $className))
 				? $row
 				: (is_array($row)
 					? Entity::getInstance($className, ['id' => $itemID, 'language' => $this->get('language')])->bind($row)
@@ -146,7 +146,7 @@ class Lot extends ItemModel
 		->where($db->qn('l.number') . ' = ' . $db->q($lotNumber = trim($lotNumber)));
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+		if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
 		{
 			$query
 			->where($db->qn('l.blocked') . ' = ' . $db->q('0'));
@@ -328,7 +328,7 @@ class Lot extends ItemModel
 		// Load lot from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$lot = $this->getItem($lotID);
 
-		if (!is_a($lot, 'Nematrack\Entity\Lot') || !$lot->get('lotID'))
+		if (!is_a($lot, ' \Entity\Lot') || !$lot->get('lotID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',

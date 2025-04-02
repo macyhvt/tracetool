@@ -20,7 +20,7 @@
 		}
 	],
 	"bin": [
-		"bin/nematrack"
+		"bin/ "
 	],
 	"require": {
 		"php": ">=7.4",
@@ -85,7 +85,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Nematrack\\": "./src"
+			" \\": "./src"
 		},
 		"files": [
 			"./src/Defines.php"
@@ -93,7 +93,7 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Nematrack\\": "./tests"
+			" \\": "./tests"
 		}
 	},
 	"config": {

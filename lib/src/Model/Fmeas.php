@@ -1,17 +1,17 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Exception;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Entity;
-use Nematrack\Helper\DatabaseHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Entity;
+use  \Helper\DatabaseHelper;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
 use Symfony\Component\String\Inflector\EnglishInflector as StringInflector;
 use function is_null;
 

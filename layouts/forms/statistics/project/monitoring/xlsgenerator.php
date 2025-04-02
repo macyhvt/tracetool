@@ -17,7 +17,7 @@ $layout  = $input->getCmd('layout');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -91,7 +91,7 @@ foreach ($projects as $project)
 	$proID = ArrayHelper::getValue($project, 'proID');
 
 	// Ensure that the project exists.
-//	if (!is_a($project, 'Nematrack\Entity\Project') || !$project->get('number'))
+//	if (!is_a($project, ' \Entity\Project') || !$project->get('number'))
 	if (!$proID)
 	{
 		// TODO - translate

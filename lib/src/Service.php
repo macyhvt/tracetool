@@ -1,11 +1,11 @@
 <?php
 /* define application namespace */
-namespace Nematrack;
+namespace  ;
 
 /* no direct script access */
 defined('_FTK_APP_') or die('403 FORBIDDEN');
 
-use Nematrack\Helper\FilesystemHelper;
+use  \Helper\FilesystemHelper;
 use RuntimeException;
 use Throwable;
 use function is_file;
@@ -49,7 +49,7 @@ abstract class Service extends Model
 	 * @param   string $name     The name of the desired Model class.
 	 * @param   array  $options  An array of instantiation options.
 	 *
-	 * @return  mixed   Nematrack\Model if instantiation was successful, or null if not.
+	 * @return  mixed    \Model if instantiation was successful, or null if not.
 	 *
 	 * @throws  RuntimeException if the model could not be loaded.
 	 * @since   1.1
@@ -66,7 +66,7 @@ abstract class Service extends Model
 		if (empty(static::$instances[$signature]))
 		{
 			$className    = basename(str_replace('\\', '/', __CLASS__));
-			$instanceName = 'Nematrack\\' . $className . '\\' . ucfirst(mb_strtolower($name));
+			$instanceName = ' \\' . $className . '\\' . ucfirst(mb_strtolower($name));
 
 			if (!class_exists($instanceName))
 			{

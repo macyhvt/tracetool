@@ -1,11 +1,11 @@
 <?php
 // Register required libraries.
 use Joomla\Registry\Registry;
-use Nematrack\Entity\Organisation;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Entity\Organisation;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Model\Lizt as ListModel;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -23,7 +23,7 @@ $proID  = $input->getInt('proid');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');

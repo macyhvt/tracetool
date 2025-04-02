@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack;
+namespace  ;
 
 /* no direct script access */
 defined('_FTK_APP_') or die('403 FORBIDDEN');
@@ -61,12 +61,12 @@ final class Mail
 
 		// Configure email.
 		$txtEmail = (new Email())
-//		->from('noreply@nematrack.com')												// email address as a simple string
-//		->from(new Address('noreply@nematrack.com'))								// email address as an object
-		->from(new Address('noreply@nematrack.com', 'Nematrack'))				// defining the email address and name as an object (email clients will display the name)
-//		->to('development@nematrack.com')
-//		->to(new Address('development@nematrack.com'))
-		->to(new Address('development@nematrack.com', 'Nematrack Development'))
+//		->from('noreply@ .com')												// email address as a simple string
+//		->from(new Address('noreply@ .com'))								// email address as an object
+		->from(new Address('noreply@ .com', ' '))				// defining the email address and name as an object (email clients will display the name)
+//		->to('development@ .com')
+//		->to(new Address('development@ .com'))
+		->to(new Address('development@ .com', '  Development'))
 //		->cc('cc@example.com')
 //		->bcc('bcc@example.com')
 //		->replyTo('fabien@example.com')
@@ -78,12 +78,12 @@ final class Mail
 		->addTextHeader('X-Auto-Response-Suppress', 'OOF, DR, RN, NRN, AutoReply');	// tell auto-repliers to not reply to this message because it's an automated email;
 		
 		$htmlEmail = (new TemplatedEmail())
-//		->from('noreply@nematrack.com')												// email address as a simple string
-//		->from(new Address('noreply@nematrack.com'))								// email address as an object
-		->from(new Address('noreply@nematrack.com', 'Nematrack'))				// defining the email address and name as an object (email clients will display the name)
-//		->to('development@nematrack.com')
-//		->to(new Address('development@nematrack.com'))
-		->to(new Address('development@nematrack.com', 'Nematrack Development'))
+//		->from('noreply@ .com')												// email address as a simple string
+//		->from(new Address('noreply@ .com'))								// email address as an object
+		->from(new Address('noreply@ .com', ' '))				// defining the email address and name as an object (email clients will display the name)
+//		->to('development@ .com')
+//		->to(new Address('development@ .com'))
+		->to(new Address('development@ .com', '  Development'))
 //		->cc('cc@example.com')
 //		->bcc('bcc@example.com')
 //		->replyTo('fabien@example.com')

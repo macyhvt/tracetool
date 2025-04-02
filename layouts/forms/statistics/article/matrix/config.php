@@ -2,13 +2,13 @@
 // Register required libraries.
 use Joomla\Utilities\ArrayHelper;
 use Joomla\Registry\Registry;
-use Nematrack\App;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\StringHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Model;
-use Nematrack\Text;
+use  \App;
+use  \Helper\LayoutHelper;
+use  \Helper\StringHelper;
+use  \Helper\UriHelper;
+use  \Helper\UserHelper;
+use  \Model;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -36,7 +36,7 @@ die('Hi + Bye!');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');

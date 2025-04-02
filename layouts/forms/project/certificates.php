@@ -2,11 +2,11 @@
 // Register required libraries.
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Messager;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -25,7 +25,7 @@ $proID  = $input->getInt('proid');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -46,7 +46,7 @@ $canDelete = true;
 $item = $view->get('item');
 
 // Block the attempt to open a non-existing project.
-if (!is_a($item, 'Nematrack\Entity\Project') || (is_a($item, 'Nematrack\Entity\Project') && is_null($item->get('proID')))) :
+if (!is_a($item, ' \Entity\Project') || (is_a($item, ' \Entity\Project') && is_null($item->get('proID')))) :
 	Messager::setMessage([
 			'type' => 'notice',
 			'text' => sprintf(Text::translate('COM_FTK_HINT_PROJECT_HAVING_ID_X_NOT_FOUND_TEXT', $this->language), $proID)
@@ -258,7 +258,7 @@ $tabindex = 0;
 	<?php if (FALSE) : ?>
 	<div class="btn-toolbar float-right mt-md-1 mt-lg-2 pt-1" role="toolbar" aria-label="<?php echo Text::translate('COM_FTK_LABEL_TOOLBAR_TEXT', $this->language); ?>">
 		<div class="btn-group" role="group" aria-label="<?php echo Text::translate('COM_FTK_LABEL_TOOLS_GROUP_TEXT', $this->language); ?>">
-			<?php if ($this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?>
+			<?php if ($this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?>
 				<a href="<?php echo UriHelper::osSafe( UriHelper::fixURL(sprintf( 'index.php?hl=%s&view=%s&layout=project.matrix&proid=%d', $this->language, $view->get('name'), /* $this->item->get('proID') */0 ))); // link to matrix ?>"
 				   role="button"
 				   class="btn btn-link"

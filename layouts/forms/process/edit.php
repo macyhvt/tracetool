@@ -2,13 +2,13 @@
 // Register required libraries.
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
-use Nematrack\Access\User;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Access\User;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -26,7 +26,7 @@ $pid    = $input->getInt('pid');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -66,7 +66,7 @@ endif;
 $item = $view->get('item');
 
 // Block the attempt to open a non-existing process.
-if (!is_a($item, 'Nematrack\Entity\Process') || (is_a($item, 'Nematrack\Entity\Process') && is_null($item->get('procID')))) :
+if (!is_a($item, ' \Entity\Process') || (is_a($item, ' \Entity\Process') && is_null($item->get('procID')))) :
     Messager::setMessage([
         'type' => 'notice',
         'text' => sprintf(Text::translate('COM_FTK_HINT_PROCESS_HAVING_ID_X_NOT_FOUND_TEXT', $this->language), $pid)

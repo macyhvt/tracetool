@@ -3,18 +3,18 @@
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access\User;
-use Nematrack\Entity\Process;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Model\Techparams;
-use Nematrack\Text;
-use Nematrack\View;
-use Nematrack\App;
-use Nematrack\Model;
+use  \Access\User;
+use  \Entity\Process;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Helper\UserHelper;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Model\Techparams;
+use  \Text;
+use  \View;
+use  \App;
+use  \Model;
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
 <?php /* conditional include */

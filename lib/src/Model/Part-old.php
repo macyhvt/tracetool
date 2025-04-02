@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -17,18 +17,18 @@ use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
 use JsonException;
 use LogicException;
-use Nematrack\App;
-use Nematrack\Entity;
-use Nematrack\Entity\Image;
-use Nematrack\Entity\Machine\Pressin;
-use Nematrack\Helper\DatabaseHelper;
-use Nematrack\Helper\FilesystemHelper;
-use Nematrack\Helper\JsonHelper;
-use Nematrack\Helper\MediaHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Item as ItemModel;
-use Nematrack\Text;
-use Nematrack\Utility\Math;
+use  \App;
+use  \Entity;
+use  \Entity\Image;
+use  \Entity\Machine\Pressin;
+use  \Helper\DatabaseHelper;
+use  \Helper\FilesystemHelper;
+use  \Helper\JsonHelper;
+use  \Helper\MediaHelper;
+use  \Messager;
+use  \Model\Item as ItemModel;
+use  \Text;
+use  \Utility\Math;
 use RuntimeException;
 use stdclass;
 use Symfony\Component\Validator\Constraints\Image as ImageValidator;
@@ -581,9 +581,9 @@ class Part extends ItemModel
 
 		$className = basename(str_replace('\\', '/', __CLASS__));
 
-		$row = (is_a($itemID, sprintf('Nematrack\Entity\%s', $className))
+		$row = (is_a($itemID, sprintf(' \Entity\%s', $className))
 			? $itemID
-			: (is_a($row, sprintf('Nematrack\Entity\%s', $className))
+			: (is_a($row, sprintf(' \Entity\%s', $className))
 				? $row
 				: (is_array($row)
 					? Entity::getInstance($className, ['id' => $itemID, 'language' => $this->get('language')])->bind($row)
@@ -1051,7 +1051,7 @@ class Part extends ItemModel
 		$articleModel = $this->getInstance('article', ['language' => $this->language]);
 		$article      = $articleModel->getItem($artID);
 
-		if (!is_a($article, 'Nematrack\Entity\Article'))
+		if (!is_a($article, ' \Entity\Article'))
 		{
 			Messager::setMessage([
 				'type' => 'danger',
@@ -1485,7 +1485,7 @@ class Part extends ItemModel
 		// but it serves us further article data required to call the files' deletion function below.
 		$item = $this->getItem($partID);
 
-		if (!is_a($item, 'Nematrack\Entity\Part') || !$item->get('partID'))
+		if (!is_a($item, ' \Entity\Part') || !$item->get('partID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1572,7 +1572,7 @@ class Part extends ItemModel
 		// but it serves us further article data required to call the files' deletion function below.
 		$item = $this->getItem($partID);
 
-		if (!is_a($item, 'Nematrack\Entity\Part') || !$item->get('partID'))
+		if (!is_a($item, ' \Entity\Part') || !$item->get('partID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1658,7 +1658,7 @@ class Part extends ItemModel
 		// but it serves us further part data required to call the files' deletion function below.
 		$part = $this->getItem($partID);
 
-		if (!is_a($part, 'Nematrack\Entity\Part') || !$part->get('partID'))
+		if (!is_a($part, ' \Entity\Part') || !$part->get('partID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1745,7 +1745,7 @@ class Part extends ItemModel
 		// but it serves us further article data required to call the files' deletion function below.
 		$item = $this->getItem($partID);
 
-		if (!is_a($item, 'Nematrack\Entity\Part') || !$item->get('partID'))
+		if (!is_a($item, ' \Entity\Part') || !$item->get('partID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1845,7 +1845,7 @@ class Part extends ItemModel
 		// but it serves us further part data required to call the files' deletion function below.
 		$part = $this->getItem($partID);
 
-		if (!is_a($part, 'Nematrack\Entity\Part') || !$part->get('partID'))
+		if (!is_a($part, ' \Entity\Part') || !$part->get('partID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1953,7 +1953,7 @@ class Part extends ItemModel
 		// but it serves us further article data required to call the files' deletion function below.
 		$item = $this->getItem($partID);
 
-		if (!is_a($item, 'Nematrack\Entity\Part') || !$item->get('partID'))
+		if (!is_a($item, ' \Entity\Part') || !$item->get('partID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -2880,7 +2880,7 @@ class Part extends ItemModel
 				'opacity'         => 110,    // The transparency level. A value between  0 and 127.   0 indicates completely opaque while 127 indicates completely transparent.
 				'imageQuality'    => 90,     // The compression level.  A value between 70 and 100. 100 indicates no compression while 70 is lower boundary for acceptable quality.
 				'thumbsQuality'   => 80,     // The compression level.  A value between 70 and 100. 100 indicates no compression while 70 is lower boundary for acceptable quality.
-				'watermark'       => sprintf('Copyright %d nematrack.com. All rights reserved.', date('Y'))
+				'watermark'       => sprintf('Copyright %d  .com. All rights reserved.', date('Y'))
 			];
 
 			try

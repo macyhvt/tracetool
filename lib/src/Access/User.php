@@ -1,10 +1,10 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Access;
+namespace  \Access;
 
 /* no direct script access */
 
-use Nematrack\Access;
+use  \Access;
 use function array_pop;
 use function array_walk;
 

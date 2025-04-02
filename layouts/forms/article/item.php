@@ -1,13 +1,13 @@
 <?php
 // Register required libraries.
 use Joomla\Uri\Uri;
-use Nematrack\Access\User;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Access\User;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Helper\UserHelper;
+use  \Messager;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -24,7 +24,7 @@ $layout = $input->getCmd('layout');
 $aid    = $input->getInt('aid');
 ?>
 <?php /* Access check */
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -45,7 +45,7 @@ $canDelete = true;
 $item = $view->get('item');
 
 // Block the attempt to open a non-existing article.
-if (!is_a($item, 'Nematrack\Entity\Article') || (is_a($item, 'Nematrack\Entity\Article') && is_null($item->get('artID')))) :
+if (!is_a($item, ' \Entity\Article') || (is_a($item, ' \Entity\Article') && is_null($item->get('artID')))) :
     Messager::setMessage([
         'type' => 'notice',
         'text' => sprintf(Text::translate('COM_FTK_HINT_ARTICLE_HAVING_ID_X_NOT_FOUND_TEXT', $this->language), $aid)

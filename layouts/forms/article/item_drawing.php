@@ -1,7 +1,7 @@
 <?php
 // Register required libraries.
-use Nematrack\App;
-use Nematrack\Text;
+use  \App;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>

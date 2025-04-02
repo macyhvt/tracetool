@@ -1,14 +1,14 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
-use Nematrack\Helper\UriHelper;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Helper\UriHelper;
+use  \Model\Lizt as ListModel;
+use  \Text;
+use  \View;
 
 /**
  * Class description

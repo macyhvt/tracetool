@@ -1,8 +1,8 @@
 <?php
 // Register required libraries.
 use Joomla\Filter\OutputFilter;
-use Nematrack\Text;
-use Nematrack\Helper\UriHelper;
+use  \Text;
+use  \Helper\UriHelper;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>

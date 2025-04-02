@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack;
+namespace  ;
 
 /* no direct script access */
 

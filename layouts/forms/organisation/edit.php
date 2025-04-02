@@ -2,12 +2,12 @@
 // Register required libraries.
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
-use Nematrack\Access\User;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Access\User;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Messager;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -25,7 +25,7 @@ $oid    = $input->getInt('oid');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -65,7 +65,7 @@ endif;
 $item = $view->get('item');
 
 // Block the attempt to open a non-existing organization.
-if (!is_a($item, 'Nematrack\Entity\Organisation') || (is_a($item, 'Nematrack\Entity\Organisation') && is_null($item->get('orgID')))) :
+if (!is_a($item, ' \Entity\Organisation') || (is_a($item, ' \Entity\Organisation') && is_null($item->get('orgID')))) :
     Messager::setMessage([
         'type' => 'notice',
         'text' => sprintf(Text::translate('COM_FTK_HINT_ORGANISATION_HAVING_ID_X_NOT_FOUND_TEXT', $this->language), $oid)

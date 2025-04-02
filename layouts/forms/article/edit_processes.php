@@ -2,11 +2,11 @@
 // Register required libraries.
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access\User;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Text;
-use Nematrack\Model;
+use  \Access\User;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Text;
+use  \Model;
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
 
@@ -107,7 +107,7 @@ defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
 				$drawing = $artProcess->extract('drawing');
 				$fileExists  = (true === $drawing->get('fileExists'));
 
-				$process = ArrayHelper::getValue($this->processes, $artProcess->get('procID')); /* iterate over array of process ids ($p is a Nematrack\Entity\Process) */
+				$process = ArrayHelper::getValue($this->processes, $artProcess->get('procID')); /* iterate over array of process ids ($p is a  \Entity\Process) */
 				$process = new Registry($process);
 		?>
 			<div class="col-sm-3 col-md-3 col-lg-3 px-sm-0" <?php /* style="background:#e8edf3; border-color:#dee3e9 #dee3e9 #dee2e6" */ ?>>

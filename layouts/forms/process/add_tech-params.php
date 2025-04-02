@@ -2,9 +2,9 @@
 // Register required libraries.
 use Joomla\Filter\OutputFilter;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access\User;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Text;
+use  \Access\User;
+use  \Helper\LayoutHelper;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>

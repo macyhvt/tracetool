@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -11,12 +11,12 @@ use DateTime;
 use DateTimeZone;
 use Exception;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Entity;
-use Nematrack\Helper\DatabaseHelper;
-use Nematrack\Messager;
-use Nematrack\Model;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Entity;
+use  \Helper\DatabaseHelper;
+use  \Messager;
+use  \Model;
+use  \Model\Lizt as ListModel;
+use  \Text;
 use Symfony\Component\String\Inflector\EnglishInflector as StringInflector;
 use Throwable;
 use function array_key_exists;
@@ -1950,7 +1950,7 @@ class Statistics extends Model
 	/**
 	 * Populates project monitoring data tables with data from tracking table.
 	 *
-	 * @return \Nematrack\Model\Statistics object for chaining
+	 * @return \ \Model\Statistics object for chaining
 	 *
 	 * @throws \Exception
 	 */

@@ -1,24 +1,24 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Joomla\Utilities\ArrayHelper;
 use JsonException;
-use Nematrack\Crypto;
-use Nematrack\Messager;
-use Nematrack\Model\User as Model;
-use Nematrack\Text;
-use Nematrack\View;
-use Nematrack\View\Item as ItemView;
+use  \Crypto;
+use  \Messager;
+use  \Model\User as Model;
+use  \Text;
+use  \View;
+use  \View\Item as ItemView;
 use function in_array;
 use function is_int;
 use function is_null;
 
 // Removing this namespaced access may conflict with View because of equal class name 'User'
-// Required to call <code>{@link \Nematrack\View::getReferer()}</code>
+// Required to call <code>{@link \ \View::getReferer()}</code>
 // Removing this namespaced access may conflict with Model because of equal class name 'User'
 
 /**
@@ -26,7 +26,7 @@ use function is_null;
  */
 class User extends ItemView
 {
-	use \Nematrack\Traits\View\User;
+	use \ \Traits\View\User;
 
 	/**
 	 * {@inheritdoc}
@@ -46,7 +46,7 @@ class User extends ItemView
 
 		// Access control. If a user's flags don't satisfy the minimum requirement access is prohibited.
 		// Role "worker" is the minimum requirement to access an entity, whereas the role(s) to access a view may be different.
-		/*if (\is_a($this->user, 'Nematrack\Entity\User') && $this->user->getFlags() < \Nematrack\Access\User::ROLE_MANAGER)
+		/*if (\is_a($this->user, ' \Entity\User') && $this->user->getFlags() < \ \Access\User::ROLE_MANAGER)
 		{
 			// $redirect = new Uri($this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language));
 			$redirect = new Uri($this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language);
@@ -63,7 +63,7 @@ class User extends ItemView
 		}*/
 
 		// Access control. Only registered and authenticated users can view content.
-		/*if (!\is_a($this->user, 'Nematrack\Entity\User'))
+		/*if (!\is_a($this->user, ' \Entity\User'))
 		{
 			// $redirect = new Uri($this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language));
 			$redirect = new Uri($this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language);
@@ -80,7 +80,7 @@ class User extends ItemView
 		}*/
 
 		// Prepare item for display.
-		/*if (\is_a($this->user, 'Nematrack\Entity\User') && $this->user->get('fullname'))
+		/*if (\is_a($this->user, ' \Entity\User') && $this->user->get('fullname'))
 		{
 			// Do some stuff.
 		}*/
@@ -115,7 +115,7 @@ class User extends ItemView
 		$creator   = $this->model->getItem($creatorID);
 
 		// Access control: get user by $creatorID + validate this user is authorized to create user accounts.
-		if ((is_a($creator, 'Nematrack\Entity\User') && !$creator->getFlags() >= \Nematrack\Access\User::ROLE_ADMINISTRATOR) || !is_a($creator, 'Nematrack\Entity\User'))
+		if ((is_a($creator, ' \Entity\User') && !$creator->getFlags() >= \ \Access\User::ROLE_ADMINISTRATOR) || !is_a($creator, ' \Entity\User'))
 		{
 			Messager::setMessage([
 				'type' => 'info',
@@ -164,7 +164,7 @@ class User extends ItemView
 		$editor   = $this->model->getItem($editorID);
 
 		// Access control: get user by $editorID + validate this user is authorized to manage/edit user accounts.
-		if ((is_a($editor, 'Nematrack\Entity\User') && !$editor->getFlags() >= \Nematrack\Access\User::ROLE_ADMINISTRATOR) || !is_a($editor, 'Nematrack\Entity\User'))
+		if ((is_a($editor, ' \Entity\User') && !$editor->getFlags() >= \ \Access\User::ROLE_ADMINISTRATOR) || !is_a($editor, ' \Entity\User'))
 		{
 			Messager::setMessage([
 				'type' => 'info',
@@ -248,9 +248,9 @@ class User extends ItemView
         // Access control: get user by $creatorID + validate this user is authorized to create a new user.
         /*if (
             // The current user must be an instance of Entity\User. If not, return to sender.
-            !is_a($this->user, 'Nematrack\Entity\User') ||
+            !is_a($this->user, ' \Entity\User') ||
             // The user whose profile is edited must exist. If not, return to sender.
-            !is_a($profile,    'Nematrack\Entity\User') ||
+            !is_a($profile,    ' \Entity\User') ||
             // Both user IDs must match. If not, return to sender.
             ($this->user->get('userID') != $profile->get('userID'))
         )
@@ -325,9 +325,9 @@ class User extends ItemView
 		// Access control: get user by $creatorID + validate this user is authorized to create a new user.
 		if (
 			// The current user must be an instance of Entity\User. If not, return to sender.
-			!is_a($this->user, 'Nematrack\Entity\User') ||
+			!is_a($this->user, ' \Entity\User') ||
 			// The user whose profile is edited must exist. If not, return to sender.
-			!is_a($profile,    'Nematrack\Entity\User') ||
+			!is_a($profile,    ' \Entity\User') ||
 			// Both user IDs must match. If not, return to sender.
 			($this->user->get('userID') != $profile->get('userID'))
 		)

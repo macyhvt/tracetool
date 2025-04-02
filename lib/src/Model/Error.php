@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -11,12 +11,12 @@ use Exception;
 use Joomla\Filter\InputFilter;
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\App;
-use Nematrack\Entity;
-use Nematrack\Helper\DatabaseHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Item as ItemModel;
-use Nematrack\Text;
+use  \App;
+use  \Entity;
+use  \Helper\DatabaseHelper;
+use  \Messager;
+use  \Model\Item as ItemModel;
+use  \Text;
 use function array_filter;
 use function is_null;
 
@@ -151,9 +151,9 @@ class Error extends ItemModel
 
 		$className = basename(str_replace('\\', '/', __CLASS__));
 
-		$row = (is_a($itemID, sprintf('Nematrack\Entity\%s', $className))
+		$row = (is_a($itemID, sprintf(' \Entity\%s', $className))
 			? $itemID
-			: (is_a($row, sprintf('Nematrack\Entity\%s', $className))
+			: (is_a($row, sprintf(' \Entity\%s', $className))
 				? $row
 				: (is_array($row)
 					? Entity::getInstance($className, ['id' => $itemID, 'language' => $this->get('language')])->bind($row)
@@ -448,7 +448,7 @@ class Error extends ItemModel
 		$item = $this->existsError(null, $number, $wincarat);			// $errID, $errorNumber, $wincaratCode, $errorName, $lang
 
 		// C H E C K (s) :   Different item found with partially or fully identical parameter(s).
-		if ($item && is_a($item, 'Nematrack\Entity\Error') && is_int($item->get('errID')))
+		if ($item && is_a($item, ' \Entity\Error') && is_int($item->get('errID')))
 		{
 			$matches = [];	// Stack for duplicate parameters
 			$msg     = [];	// Stack for messages
@@ -699,7 +699,7 @@ class Error extends ItemModel
 		$item = $this->existsError($errID);								// $errID, $errorNumber, $wincaratCode, $errorName, $lang
 
 		// The requested item was not found.
-		if (!$item || !is_a($item, 'Nematrack\Entity\Error') || !is_int($item->get('errID')) || ($item->get('errID') != $errID))
+		if (!$item || !is_a($item, ' \Entity\Error') || !is_int($item->get('errID')) || ($item->get('errID') != $errID))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -712,7 +712,7 @@ class Error extends ItemModel
 		// Dupecheck(s).
 
 		// C H E C K (s) :   The requested item was found. Now we check for parameter(s) that must be unique to be unique.
-		if ($item && is_a($item, 'Nematrack\Entity\Error') && is_int($item->get('errID'))/* && ($item->get('errID') == $errID)*/)
+		if ($item && is_a($item, ' \Entity\Error') && is_int($item->get('errID'))/* && ($item->get('errID') == $errID)*/)
 		{
 			$matches = [];	// Stack for duplicate parameters
 			$msg     = [];	// Stack for messages
@@ -740,7 +740,7 @@ class Error extends ItemModel
 
 					$matches[] = sprintf('<strong>%s</strong>: %s', Text::translate('COM_FTK_LABEL_CODE_WINCARAT_TEXT', $this->language), $wincarat);
 
-					if ($tmpError && is_a($tmpError, 'Nematrack\Entity\Error') && is_int($tmpError->get('errID')))
+					if ($tmpError && is_a($tmpError, ' \Entity\Error') && is_int($tmpError->get('errID')))
 					{
 						$msg[] = sprintf(Text::translate('COM_FTK_ERROR_APPLICATION_DUPLICATE_WINCARAT_CODE_TEXT', $this->language), $wincarat, $tmpError->get('number'));
 					}
@@ -881,7 +881,7 @@ class Error extends ItemModel
 		// but it serves us further error data required to call the files' deletion function below.
 		$item = $this->getItem($errID);
 
-		if (!is_a($item, 'Nematrack\Entity\Error') || !$item->get('errID'))
+		if (!is_a($item, ' \Entity\Error') || !$item->get('errID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -975,7 +975,7 @@ class Error extends ItemModel
 		// but it serves us further error data required to call the files' deletion function below.
 		$item = $this->getItem($errID);
 
-		if (!is_a($item, 'Nematrack\Entity\Error') || !$item->get('errID'))
+		if (!is_a($item, ' \Entity\Error') || !$item->get('errID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1066,7 +1066,7 @@ class Error extends ItemModel
 		// but it serves us further error data required to call the files' deletion function below.
 		$error = $this->getItem($errID);
 
-		if (!is_a($error, 'Nematrack\Entity\Error') || !$error->get('errID'))
+		if (!is_a($error, ' \Entity\Error') || !$error->get('errID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1160,7 +1160,7 @@ class Error extends ItemModel
 		// but it serves us further error data required to call the files' deletion function below.
 		$error = $this->getItem($errID);
 
-		if (!is_a($error, 'Nematrack\Entity\Error') || !$error->get('errID'))
+		if (!is_a($error, ' \Entity\Error') || !$error->get('errID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1255,7 +1255,7 @@ class Error extends ItemModel
 //		$error = $this->getItem($errID);	// FIXME - function not implemented yet
 
 		/*// DiSABLED until function 'getItem()' is implemented
-		if (!is_a($error, 'Nematrack\Entity\Error') || !$error->get('errID'))
+		if (!is_a($error, ' \Entity\Error') || !$error->get('errID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1356,7 +1356,7 @@ class Error extends ItemModel
 		// but it serves us further error data required to call the files' deletion function below.
 		$error = $this->getItem($errID);
 
-		if (!is_a($error, 'Nematrack\Entity\Error') || !$error->get('errID'))
+		if (!is_a($error, ' \Entity\Error') || !$error->get('errID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',

@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack;
+namespace  ;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -10,8 +10,8 @@ use DateTimeZone;
 use Exception;
 use Joomla\Database\Mysqli\MysqliDriver;
 use Monolog\Logger;
-use Nematrack\Helper\DatabaseHelper;
-use Nematrack\Helper\FilesystemHelper;
+use  \Helper\DatabaseHelper;
+use  \Helper\FilesystemHelper;
 use RuntimeException;
 use Throwable;
 use function is_a;
@@ -98,7 +98,7 @@ class Model extends App
 	 * @param   string  $name     The name of the desired Model class.
 	 * @param   array   $options  An array of instantiation options.
 	 *
-	 * @return  mixed   Nematrack\Model if instantiation was successful, or null if not.
+	 * @return  mixed    \Model if instantiation was successful, or null if not.
 	 *
 	 * @throws  RuntimeException if the model could not be loaded.
 	 *@since   1.1
@@ -115,7 +115,7 @@ class Model extends App
 		if (empty(static::$instances[$signature]))
 		{
 			$className    = basename(str_replace('\\', '/', __CLASS__));
-			$instanceName = 'Nematrack\\' . $className . '\\' . ucfirst(mb_strtolower($name));
+			$instanceName = ' \\' . $className . '\\' . ucfirst(mb_strtolower($name));
 
 			if (!class_exists($instanceName))
 			{

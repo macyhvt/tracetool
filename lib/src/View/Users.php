@@ -1,15 +1,15 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Joomla\Uri\Uri;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
-use Nematrack\View\Lizt as ListView;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
+use  \View\Lizt as ListView;
 use function property_exists;
 
 /**
@@ -17,7 +17,7 @@ use function property_exists;
  */
 class Users extends ListView
 {
-	use \Nematrack\Traits\View\Users;
+	use \ \Traits\View\Users;
 
 	/**
 	 * {@inheritdoc}
@@ -36,7 +36,7 @@ class Users extends ListView
 		}
 
 		// Access control. Only registered and authenticated users can view content.
-		if (!is_a($this->user, 'Nematrack\Entity\User'))
+		if (!is_a($this->user, ' \Entity\User'))
 		{
 			$redirect = new Uri($this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language);
 
@@ -53,7 +53,7 @@ class Users extends ListView
 
 		// Access control. If a user's flags don't satisfy the minimum requirement access is prohibited.
 		// Role "worker" is the minimum requirement to access an entity, whereas the role(s) to access a view may be different.
-		if ($this->user->getFlags() < \Nematrack\Access\User::ROLE_ADMINISTRATOR)
+		if ($this->user->getFlags() < \ \Access\User::ROLE_ADMINISTRATOR)
 		{
 			$redirect = new Uri($this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language));
 
@@ -69,7 +69,7 @@ class Users extends ListView
 		}
 
 		// Access control. If a user's flags don't satisfy the minimum requirement, but the user is privileged to manage users, silently redirect it to its organisation users.
-		if ($this->user->getFlags() == \Nematrack\Access\User::ROLE_ADMINISTRATOR)
+		if ($this->user->getFlags() == \ \Access\User::ROLE_ADMINISTRATOR)
 		{
 			$redirect = new Uri($this->getInstance('organisation', ['language' => $this->language])->getRoute());
 			$redirect->setVar('layout', 'users');

@@ -1,14 +1,14 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
-use Nematrack\Entity;
-use Nematrack\Model\Item as ItemModel;
+use  \Entity;
+use  \Model\Item as ItemModel;
 
-//use Nematrack\User;
+//use  \User;
 
 /**
  * Class description
@@ -36,7 +36,7 @@ class Contact extends ItemModel
 	 *
 	 * @param   int $itemID
 	 *
-	 * @return  \Nematrack\Entity\Contact
+	 * @return  \ \Entity\Contact
 	 */
 	public function getItem(int $itemID) : Entity\Contact
 	{
@@ -62,9 +62,9 @@ class Contact extends ItemModel
 			);
 		}
 
-		return (is_a($itemID, 'Nematrack\Entity\Contact')
+		return (is_a($itemID, ' \Entity\Contact')
 			? $itemID
-			: (is_a($row, 'Nematrack\Entity\Contact')
+			: (is_a($row, ' \Entity\Contact')
 				? $row
 				: (is_array($row)
 					? Entity::getInstance('contact', ['id' => $itemID, 'language' => $this->get('language')])->bind($row)

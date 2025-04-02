@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack;
+namespace  ;
 
 /* no direct script access */
 defined('_FTK_APP_') or die('403 FORBIDDEN');
@@ -10,11 +10,11 @@ use Joomla\Input\Input;
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Entity\User;
-use Nematrack\Helper\FilesystemHelper;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\StringHelper;
-use Nematrack\Helper\UriHelper;
+use  \Entity\User;
+use  \Helper\FilesystemHelper;
+use  \Helper\LayoutHelper;
+use  \Helper\StringHelper;
+use  \Helper\UriHelper;
 use RuntimeException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\String\Inflector\EnglishInflector as StringInflector;
@@ -172,7 +172,7 @@ abstract class View extends App
 		$model = Model::getInstance($this->name, ['language' => $this->get('language', ArrayHelper::getValue($options, 'language'))]);
 
 		// TODO - check $options parameter for model names and load+assign them if exist.
-		if (is_a($model, 'Nematrack\Model'))
+		if (is_a($model, ' \Model'))
 		{
 			$this->setModel($model, true);
 		}
@@ -200,7 +200,7 @@ abstract class View extends App
 	 * @param   string $name     The name of the desired View class.
 	 * @param   array  $options  An array of instantiation options.
 	 *
-	 * @return  mixed   Nematrack\View if instantiation was successful, or null if not.
+	 * @return  mixed    \View if instantiation was successful, or null if not.
 	 *
 	 * @throws  \RuntimeException if the view could not be loaded.
 	 * @since   1.1
@@ -217,7 +217,7 @@ abstract class View extends App
 		if (empty(static::$instances[$signature]))
 		{
 			$className    = basename(str_replace('\\', '/', __CLASS__));
-			$instanceName = 'Nematrack\\' . $className . '\\' . ucfirst(mb_strtolower($name));
+			$instanceName = ' \\' . $className . '\\' . ucfirst(mb_strtolower($name));
 
 			if (!class_exists($instanceName))
 			{
@@ -340,7 +340,7 @@ abstract class View extends App
 	/**
 	 * Function to prepare a view object for output.
 	 *
-	 * @return \Nematrack\View object for chaining
+	 * @return \ \View object for chaining
 	 */
 	public function prepare() : self
 	{
@@ -389,7 +389,7 @@ abstract class View extends App
 	 * @param   Model $model  The model to be assigned.
 	 * @param   bool  $primary
 	 *
-	 * @return \Nematrack\View object for chaining
+	 * @return \ \View object for chaining
 	 */
 	public function setModel(Model $model, bool $primary = true) : self
 	{
@@ -854,7 +854,7 @@ JS;
 	/**
 	 * Add description...
 	 *
-	 * @param   \Nematrack\Entity\User $user
+	 * @param   \ \Entity\User $user
 	 *
 	 * @return bool
 	 *
@@ -879,7 +879,7 @@ JS;
 	protected function checkAccess() : void
 	{
 		// Only registered and authenticated users can view content.
-		if (!is_a($this->user, 'Nematrack\Entity\User'))
+		if (!is_a($this->user, ' \Entity\User'))
 		{
 			$redirect = new Uri($this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language);
 

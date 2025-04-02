@@ -1,16 +1,16 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Exception;
-use Nematrack\Access;
-use Nematrack\App;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Access;
+use  \App;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
 use function is_a;
 use function is_null;
 
@@ -85,7 +85,7 @@ class Lots extends ListModel
 		);
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+		if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
 		{
 			$query
 			->where($db->qn('l.blocked') . ' = ' . $db->q('0'));

@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -8,10 +8,10 @@ defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 use DateTime;
 use DateTimeZone;
 use Exception;
-use Nematrack\App;
-use Nematrack\Messager;
-use Nematrack\Model\Item as ItemModel;
-use Nematrack\Text;
+use  \App;
+use  \Messager;
+use  \Model\Item as ItemModel;
+use  \Text;
 use function array_filter;
 use function is_null;
 

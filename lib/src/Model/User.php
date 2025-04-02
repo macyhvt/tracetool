@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -12,14 +12,14 @@ use InvalidArgumentException;
 use Joomla\Filter\InputFilter;
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\App;
-use Nematrack\Crypto;
-use Nematrack\Entity;
-use Nematrack\Factory;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Item as ItemModel;
-use Nematrack\Text;
+use  \App;
+use  \Crypto;
+use  \Entity;
+use  \Factory;
+use  \Helper\UserHelper;
+use  \Messager;
+use  \Model\Item as ItemModel;
+use  \Text;
 use function array_keys;
 use function array_map;
 use function is_a;
@@ -27,7 +27,7 @@ use function is_array;
 use function is_null;
 use function is_object;
 
-// use Nematrack\Access\User;		// Removing this namespaced access may conflict with Entity and/or Model because of equal class name 'User'
+// use  \Access\User;		// Removing this namespaced access may conflict with Entity and/or Model because of equal class name 'User'
 // Removing this namespaced access may conflict with Access\User and/or Entity because of equal class name 'User'
 
 /**
@@ -157,9 +157,9 @@ class User extends ItemModel
 
 		$className = basename(str_replace('\\', '/', __CLASS__));
 
-		$row = (is_a($itemID, sprintf('Nematrack\Entity\%s', $className))
+		$row = (is_a($itemID, sprintf(' \Entity\%s', $className))
 			? $itemID
-			: (is_a($row, sprintf('Nematrack\Entity\%s', $className))
+			: (is_a($row, sprintf(' \Entity\%s', $className))
 				? $row
 				: (is_array($row)
 					? Entity::getInstance($className, ['id' => $itemID, 'language' => $this->get('language')])->bind($row)
@@ -368,7 +368,7 @@ class User extends ItemModel
 		}
 
 		// Validate session userID equals current form editor's userID.
-		if (is_a($creator, 'Nematrack\Entity\User') && (int) $creator->get('userID') !== (int) $formData->user)
+		if (is_a($creator, ' \Entity\User') && (int) $creator->get('userID') !== (int) $formData->user)
 		{
 			Messager::setMessage([
 				'type' => 'warning',
@@ -491,7 +491,7 @@ class User extends ItemModel
 
 		$xUser   = $this->getItem( ArrayHelper::getValue($formData, 'xid', 0, 'INT') );
 
-		if (!is_a($xUser, 'Nematrack\Entity\User'))
+		if (!is_a($xUser, ' \Entity\User'))
 		{
 			Messager::setMessage([
 				'type' => 'notice',
@@ -511,7 +511,7 @@ class User extends ItemModel
 		}
 
 		// Validate session userID equals current form editor's userID
-		if (is_a($editor, 'Nematrack\Entity\User') && (int) $editor->get('userID') !== (int) $formData->user)
+		if (is_a($editor, ' \Entity\User') && (int) $editor->get('userID') !== (int) $formData->user)
 		{
 			Messager::setMessage([
 				'type' => 'warning',
@@ -758,7 +758,7 @@ class User extends ItemModel
         $user   = $this->getItem( ArrayHelper::getValue($formData, 'uid', 0, 'INT') );
 //		$userID = null;
 
-        if (!is_a($user, 'Nematrack\Entity\User'))
+        if (!is_a($user, ' \Entity\User'))
         {
             Messager::setMessage([
                 'type' => 'notice',
@@ -858,7 +858,7 @@ class User extends ItemModel
 		$user   = $this->getItem( ArrayHelper::getValue($formData, 'uid', 0, 'INT') );
 //		$userID = null;
 
-		if (!is_a($user, 'Nematrack\Entity\User'))
+		if (!is_a($user, ' \Entity\User'))
 		{
 			Messager::setMessage([
 				'type' => 'notice',
@@ -983,8 +983,8 @@ class User extends ItemModel
 			// Get profile data from input data object.
 			// $profile = $rowData->extract('profile');
 
-			// $profile = \Nematrack\Utility\ArrayHelper::flatten('.', $profile->toArray());
-			$mergedProfile = \Nematrack\Helper\ArrayHelper::flatten('.', $mergedProfile->toArray());
+			// $profile = \ \Utility\ArrayHelper::flatten('.', $profile->toArray());
+			$mergedProfile = \ \Helper\ArrayHelper::flatten('.', $mergedProfile->toArray());
 
 			// Prepare rows to be inserted.
 			$tuples = [];
@@ -1112,7 +1112,7 @@ class User extends ItemModel
 		// Load user from db first.
 		$user = $this->getItem($userID);
 
-		if (!is_a($user, 'Nematrack\Entity\User') || !$user->get('orgID'))
+		if (!is_a($user, ' \Entity\User') || !$user->get('orgID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1215,7 +1215,7 @@ class User extends ItemModel
 		$db->setQuery('SET NAMES utf8')->execute();
 		$db->setQuery('SET CHARACTER SET utf8')->execute();
 
-		if (!is_a($user, 'Nematrack\Entity\User') || !$user->get('orgID'))
+		if (!is_a($user, ' \Entity\User') || !$user->get('orgID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',

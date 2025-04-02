@@ -1,7 +1,7 @@
 <?php
 // Register required libraries.
-use Nematrack\Crypto;
-use Nematrack\Text;
+use  \Crypto;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>

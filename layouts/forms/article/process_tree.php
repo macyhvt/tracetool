@@ -2,28 +2,28 @@
 // Register required libraries.
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\App;
-use Nematrack\Entity\Process;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Text;
-use Nematrack\View;
+use  \App;
+use  \Entity\Process;
+use  \Helper\UriHelper;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
 <?php /* Init vars */
 //$lang    = $this->get('language');
 $view    = $this->__get('view');
-$input   = (is_a($view, 'Nematrack\View') ? $view->get('input') : App::getInput());
-$model   = (is_a($view, 'Nematrack\View') ? $view->get('model') : null);
-$user    = (is_a($view, 'Nematrack\View') ? $view->get('user')  : App::getAppUser());
+$input   = (is_a($view, ' \View') ? $view->get('input') : App::getInput());
+$model   = (is_a($view, ' \View') ? $view->get('model') : null);
+$user    = (is_a($view, ' \View') ? $view->get('user')  : App::getAppUser());
 
 // N O T E :
 // The next two lines appeared to be necessary when requesting this template via AJAX.
 // It is supposed that the view initialization which happens in index.php is bypassed when requesting content this way.
 $view    = (is_null($view) ? ($input->post->getWord('view') ?? ($input->getWord('view') ?? null)) : $view);
-$view    = (is_a($view, 'Nematrack\View') ? $view : View::getInstance($view, ['language' => $this->language]));
-$input   = (is_a($view, 'Nematrack\View') ? $view->get('input') : $input);
-$model   = (is_a($view, 'Nematrack\View') ? $view->get('model') : $model);
+$view    = (is_a($view, ' \View') ? $view : View::getInstance($view, ['language' => $this->language]));
+$input   = (is_a($view, ' \View') ? $view->get('input') : $input);
+$model   = (is_a($view, ' \View') ? $view->get('model') : $model);
 
 $task    = $this->get('task');
 $article = $this->get('article', ($input->getCmd('article') ?? null));	// Attempt to fetch article name from layout data first and fall back to $_GET
@@ -31,7 +31,7 @@ $article = $this->get('article', ($input->getCmd('article') ?? null));	// Attemp
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');

@@ -1,13 +1,13 @@
 <?php
 /* define application namespace */
-namespace Nematrack;
+namespace  ;
 
 /* no direct script access */
 defined('_FTK_APP_') or die('403 FORBIDDEN');
 
 use Exception;
 use Joomla\Registry\Registry;
-use Nematrack\Helper\FilesystemHelper;
+use  \Helper\FilesystemHelper;
 
 /**
  * Class description

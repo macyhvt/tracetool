@@ -1,13 +1,13 @@
 <?php
 // Register required libraries.
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access\User;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\StringHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Access\User;
+use  \Helper\LayoutHelper;
+use  \Helper\StringHelper;
+use  \Helper\UriHelper;
+use  \Messager;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -33,7 +33,7 @@ $redirect = (!is_null($redirect) && StringHelper::isBase64Encoded($redirect))
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -61,7 +61,7 @@ endif;
 $item = $view->get('item');
 
 // Block the attempt to open a non-existing project.
-if (!is_a($item, 'Nematrack\Entity\Project') || (is_a($item, 'Nematrack\Entity\Project') && is_null($item->get('proID')))) :
+if (!is_a($item, ' \Entity\Project') || (is_a($item, ' \Entity\Project') && is_null($item->get('proID')))) :
     Messager::setMessage([
         'type' => 'notice',
         'text' => sprintf(Text::translate('COM_FTK_HINT_PROJECT_HAVING_ID_X_NOT_FOUND_TEXT', $this->language), $proID)

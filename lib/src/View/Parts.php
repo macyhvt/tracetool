@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -8,10 +8,10 @@ defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 use Exception;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View\Lizt as ListView;
+use  \Helper\UserHelper;
+use  \Messager;
+use  \Text;
+use  \View\Lizt as ListView;
 use function array_diff_key;
 use function is_array;
 use function is_null;
@@ -19,14 +19,14 @@ use function is_numeric;
 use function is_object;
 use function property_exists;
 
-// Required to call <code>{@link \Nematrack\View::getReferer()}</code>
+// Required to call <code>{@link \ \View::getReferer()}</code>
 
 /**
  * Class description
  */
 class Parts extends ListView
 {
-	use \Nematrack\Traits\View\Parts;
+	use \ \Traits\View\Parts;
 
 	/**
 	 * {@inheritdoc}
@@ -45,7 +45,7 @@ class Parts extends ListView
 		}
 
 		// Access control. Only registered and authenticated users can view content.
-		if (!is_a($this->user, 'Nematrack\Entity\User'))
+		if (!is_a($this->user, ' \Entity\User'))
 		{
 			$redirect = new Uri($this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language);
 
@@ -107,7 +107,7 @@ class Parts extends ListView
 			$status = $this->model->findParts([
 				'partID' => $this->input->getInt('ptid', $this->input->getInt('partID')),
 				'search' => $this->input->post->getString('searchword') ?? $this->input->getString('searchword'),
-				'filter' => $this->input->getString('filter', (string) \Nematrack\Model\Lizt::FILTER_ALL)
+				'filter' => $this->input->getString('filter', (string) \ \Model\Lizt::FILTER_ALL)
 			]);
 		}
 
@@ -494,11 +494,11 @@ class Parts extends ListView
 			}
             /*echo $this->input->getInt('ptid', $this->input->getInt('partID'));
             echo $searchWord;
-            echo $this->input->getString('filter', (string) \Nematrack\Model\Lizt::FILTER_ALL);exit;*/
+            echo $this->input->getString('filter', (string) \ \Model\Lizt::FILTER_ALL);exit;*/
 			$searchParams = [
 				'partID' => $this->input->getInt('ptid', $this->input->getInt('partID')),
 				'search' => $searchWord,
-				'filter' => $this->input->getString('filter', (string) \Nematrack\Model\Lizt::FILTER_ALL)
+				'filter' => $this->input->getString('filter', (string) \ \Model\Lizt::FILTER_ALL)
 			];
 
 			$status = $this->model->findParts($searchParams);

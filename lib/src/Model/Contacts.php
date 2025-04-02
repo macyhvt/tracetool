@@ -1,11 +1,11 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined('_FTK_APP_') or die('403 FORBIDDEN');
 
-use Nematrack\Model\Lizt as ListModel;
+use  \Model\Lizt as ListModel;
 
 /**
  * Class description

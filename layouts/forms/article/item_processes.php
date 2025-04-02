@@ -3,10 +3,10 @@
 use Joomla\Filter\OutputFilter;
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access\User;
-use Nematrack\App;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Text;
+use  \Access\User;
+use  \App;
+use  \Helper\LayoutHelper;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -72,7 +72,7 @@ defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 				$drawing    = $artProcess->extract('drawing');
 				$fileExists = (true === $drawing->get('fileExists'));
 
-				$process = ArrayHelper::getValue($this->processes, $artProcess->get('procID')); /* iterate over the array of process ids ($p is a Nematrack\Entity\Process) */
+				$process = ArrayHelper::getValue($this->processes, $artProcess->get('procID')); /* iterate over the array of process ids ($p is a  \Entity\Process) */
 				$process = new Registry($process);
 		?>
 		<div class="col-sm-6 col-md-5 col-lg-4 px-sm-0">

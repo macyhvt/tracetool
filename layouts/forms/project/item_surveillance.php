@@ -1,8 +1,8 @@
 <?php
 // Register required libraries.
-use Nematrack\Access\User;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Text;
+use  \Access\User;
+use  \Helper\UriHelper;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>

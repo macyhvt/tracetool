@@ -1,16 +1,16 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
-use Nematrack\View\Lizt as ListView;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
+use  \View\Lizt as ListView;
 use function is_array;
 use function is_object;
 
@@ -20,7 +20,7 @@ use function is_object;
  */
 class Articles extends ListView
 {
-	use \Nematrack\Traits\View\Articles;
+	use \ \Traits\View\Articles;
 
 	/**
 	 * {@inheritdoc}
@@ -39,7 +39,7 @@ class Articles extends ListView
 		}
 
 		// Access control. Only registered and authenticated users can view content.
-		if (!is_a($this->user, 'Nematrack\Entity\User'))
+		if (!is_a($this->user, ' \Entity\User'))
 		{
 			$redirect = new Uri($this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language);
 
@@ -56,7 +56,7 @@ class Articles extends ListView
 
 		// Access control. If a user's flags don't satisfy the minimum requirement access is prohibited.
 		// Role "worker" is the minimum requirement to access an entity, whereas the role(s) to access a view may be different.
-		if ($this->user->getFlags() < \Nematrack\Access\User::ROLE_WORKER)
+		if ($this->user->getFlags() < \ \Access\User::ROLE_WORKER)
 		{
 			$redirect = new Uri($this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language));
 
@@ -85,7 +85,7 @@ class Articles extends ListView
 				 !$this->user->isGuest()    &&
 				 !$this->user->isCustomer() &&
 				 !$this->user->isSupplier() &&
-				  $this->user->getFlags()   >= \Nematrack\Access\User::ROLE_PROGRAMMER
+				  $this->user->getFlags()   >= \ \Access\User::ROLE_PROGRAMMER
 			) :
 				// FIXME - in model replace function 'getList' with this new implementation and test all scripts
 				$list = $this->model->getList([
@@ -174,7 +174,7 @@ class Articles extends ListView
 					$goTo->setVar('aid', ArrayHelper::getValue($status, 'artID', 0, 'INT'));
 					$goTo->setVar('return', base64_encode($redirect->toString()));
 
-					if (!$isRestricted || ($isRestricted && !$isDeleted) || $this->user->getFlags() >= \Nematrack\Access\User::ROLE_ADMINISTRATOR)
+					if (!$isRestricted || ($isRestricted && !$isDeleted) || $this->user->getFlags() >= \ \Access\User::ROLE_ADMINISTRATOR)
 					{
 						header('Location: ' . $goTo->toString());
 						exit;

@@ -1,10 +1,10 @@
 <?php
 // Register required libraries.
 use Joomla\Registry\Registry;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Model;
-use Nematrack\Text;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Model;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -22,7 +22,7 @@ $ptid   = $input->getInt('ptid');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -267,7 +267,7 @@ $tabindex = 0;
 		]
 	]); ?>
 
-	<?php if (is_a($lot, 'Nematrack\Entity\Lot')) : ?>
+	<?php if (is_a($lot, ' \Entity\Lot')) : ?>
 	<div class="mt-lg-3" id="partProcesses">
 		<?php echo LayoutHelper::render('forms.article.process_tree', ['task' => 'edit', 'article' => $lot->get('type')] , ['language' => $lang]); ?>
 	</div>

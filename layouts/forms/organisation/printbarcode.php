@@ -1,12 +1,12 @@
 <?php
 // Register required libraries.
 use Joomla\Registry\Registry;
-use Nematrack\Access\User;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Access\User;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Model\Lizt as ListModel;
+use  \Text;
+use  \View;
 use Logincodegen\Barcode;
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -114,9 +114,9 @@ $formData = null;
 
         <div class="col-md-6 frontlogincard">
             <div class="row rowss">
-                <div class="col-md-6 logss logoDiv"><img src="https://nematrack.com/assets/img/global/logos/froetek-logo.png"></div>
+                <div class="col-md-6 logss logoDiv"><img src="https:// .com/assets/img/global/logos/froetek-logo.png"></div>
                 <div class="col-md-6 logss logoDiv2">
-                    <img src="https://mike.nematrack.com/assets/img/global/logos/Nematech-logoJPG">
+                    <img src="https://mike. .com/assets/img/global/logos/Nematech-logoJPG">
                 </div>
             </div>
             <div class="row">
@@ -169,10 +169,10 @@ $formData = null;
             </div>
             <div class="row rowssbtm">
                 <div class="col-md-6 logssbtm logoDiv3">
-                    <img src="https://mike.nematrack.com/assets/img/global/logos/nemectek.png">
+                    <img src="https://mike. .com/assets/img/global/logos/nemectek.png">
                 </div>
                 <div class="col-md-6 logssbtm logoDiv4">
-                    <img src="https://mike.nematrack.com/assets/img/global/logos/nematrack.png">
+                    <img src="https://mike. .com/assets/img/global/logos/ .png">
                 </div>
             </div>
         </div>

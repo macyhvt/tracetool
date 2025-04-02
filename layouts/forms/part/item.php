@@ -3,16 +3,16 @@
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access\User;
-use Nematrack\Entity\Process;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Model\Techparams;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Access\User;
+use  \Entity\Process;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Helper\UserHelper;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Model\Techparams;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -51,7 +51,7 @@ if($urlviewname == "part" && $layout == "item"){
     </style>
 <?php }?>
 <?php /* Access check */
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -80,7 +80,7 @@ endif;
 $item = $view->get('item');
 
 // Block the attempt to open a non-existing part.
-if (!is_a($item, 'Nematrack\Entity\Part') || (is_a($item, 'Nematrack\Entity\Part') && is_null($item->get('partID')))) :
+if (!is_a($item, ' \Entity\Part') || (is_a($item, ' \Entity\Part') && is_null($item->get('partID')))) :
     Messager::setMessage([
         'type' => 'notice',
         'text' => sprintf(Text::translate('COM_FTK_HINT_PART_HAVING_ID_X_NOT_FOUND_TEXT', $this->language), $item->get('partID'))
@@ -209,7 +209,7 @@ endif;
 $staticTechParams = (array) $model->getInstance('techparams', ['language' => $lang])->getStaticTechnicalParameters(true);
 
 // Retrieve the error catalogue for all processes that this part has to run through.
-// NOTE: The next command is outsourced into \Nematrack\View\Part::prepareErrorList() in TT-DEV
+// NOTE: The next command is outsourced into \ \View\Part::prepareErrorList() in TT-DEV
 //       so that <var>$errors</var> will be available from this part via this->item->get('errors').
 $errors   = $model->getInstance('errors', ['language' => $lang])->getErrorsByLanguage(
 	$this->lngID,
@@ -1126,7 +1126,7 @@ input.bg-warning {
 				/* When the editing time window is closed, only authorised users
 				 * with appropriate rights can still enable editing (Quality manager).
 				 */
-//				$userCanEdit  = (!$isEditExpired) ? $userCanEdit : $user->getFlags() >= \Nematrack\Access\User::ROLE_PROGRAMMER;
+//				$userCanEdit  = (!$isEditExpired) ? $userCanEdit : $user->getFlags() >= \ \Access\User::ROLE_PROGRAMMER;
 
 				// A quality responsible can re-open an expired editing time window.
 				$userCanReleaseEditing = false;

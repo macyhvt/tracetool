@@ -2,10 +2,10 @@
 // Register required libraries.
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
-use Nematrack\Access\User;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Text;
+use  \Access\User;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -21,7 +21,7 @@ $layout = $input->getCmd('layout');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
     try
     {
         $formData = $user->__get('formData');
@@ -146,7 +146,7 @@ $modifyer   = $userModel->getItem((int) $item->get('modified_by'));
 			);
 		?></h1>
 
-		<?php /*// FIXME - debug this code. It was c+p from dev.nematrack.com and doesn't work
+		<?php /*// FIXME - debug this code. It was c+p from dev. .com and doesn't work
 			$uri = new Uri($return);
 			$uri->setVar('layout', 'item.catalog');
 			$uri->setVar('return', base64_encode($return));

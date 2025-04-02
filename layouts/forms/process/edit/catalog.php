@@ -3,10 +3,10 @@
 use Joomla\Filter\OutputFilter;
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Model\Lizt as ListModel;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -24,7 +24,7 @@ $eid    = $input->getInt('eid', 0);
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
     try
     {
         $formData = $user->__get('formData');
@@ -48,7 +48,7 @@ endif;
 $item       = $view->get('item');
 $errCatalog = $item->__get('errCatalog', []);
 $list       = &$errCatalog;	// ADDED on 2023-06-05
-//$filter     = $input->getString('filter', (string) \Nematrack\Model\Lizt::FILTER_ACTIVE);
+//$filter     = $input->getString('filter', (string) \ \Model\Lizt::FILTER_ACTIVE);
 $filter     = $input->getString('filter');
 $lastID     = $model->getInstance('errors', ['language' => $this->language])->getLastInsertID();
 
@@ -281,7 +281,7 @@ $cnt = count($list);	// ADDED on 2023-06-05
 
 <hr>
 
-<?php if ($user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?>
+<?php if ($user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?>
 	<?php if (0 &&	$item->get('incomplete') && is_countable($untranslated = (array) $item->get('incomplete')->get('translation'))) : ?>
 		<?php foreach ($untranslated as $property => $this->languageuages) : ?>
 

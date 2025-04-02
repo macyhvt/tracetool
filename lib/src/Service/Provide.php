@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Service;
+namespace  \Service;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -8,12 +8,12 @@ defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 use finfo;
 use Joomla\Utilities\ArrayHelper;
 use JsonException;
-use Nematrack\App;
-use Nematrack\Helper\ImageHelper;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Model;
-use Nematrack\Service;
-use Nematrack\Text;
+use  \App;
+use  \Helper\ImageHelper;
+use  \Helper\LayoutHelper;
+use  \Model;
+use  \Service;
+use  \Text;
 use RuntimeException;
 use stdclass;
 use voku\helper\HtmlMin;
@@ -116,12 +116,12 @@ class Provide extends Service
 						case UPLOAD_ERR_OK:
 						break;
 
-						case UPLOAD_ERR_INI_SIZE:    // Wert: 1; die hochgeladene Datei überschreitet die in der Anweisung upload_max_filesize in php.ini festgelegte Größe.
+						case UPLOAD_ERR_INI_SIZE:    // Wert: 1; die hochgeladene Datei ï¿½berschreitet die in der Anweisung upload_max_filesize in php.ini festgelegte Grï¿½ï¿½e.
 							throw new RuntimeException(
 								sprintf(Text::translate('COM_FTK_ERROR_FILE_UPLOAD_ERR_INI_SIZE_TEXT'), ini_get('upload_max_filesize'))
 							);
 
-						case UPLOAD_ERR_FORM_SIZE:    // Wert: 2; die hochgeladene Datei überschreitet die in dem HTML Formular mittels des versteckten Feldes MAX_FILE_SIZE angegebene maximale Dateigröße.
+						case UPLOAD_ERR_FORM_SIZE:    // Wert: 2; die hochgeladene Datei ï¿½berschreitet die in dem HTML Formular mittels des versteckten Feldes MAX_FILE_SIZE angegebene maximale Dateigrï¿½ï¿½e.
 							throw new RuntimeException(
 								sprintf(Text::translate('COM_FTK_ERROR_FILE_UPLOAD_ERR_FORM_SIZE_TEXT'), FTKRULE_UPLOAD_MAX_SIZE)
 							);
@@ -135,19 +135,19 @@ class Provide extends Service
 							// FIXME - wrong reference for index image upload
 						break;    // do nothing, just leave drawing data object received as is - preserving pre-filled information
 
-						case UPLOAD_ERR_NO_TMP_DIR:    // Wert: 6; Fehlender temporärer Ordner. Eingeführt in PHP 5.0.3.
+						case UPLOAD_ERR_NO_TMP_DIR:    // Wert: 6; Fehlender temporï¿½rer Ordner. Eingefï¿½hrt in PHP 5.0.3.
 							throw new RuntimeException(
 								Text::translate('COM_FTK_ERROR_FILE_UPLOAD_ERR_NO_TMP_DIR_TEXT')
 							);
 
-						case UPLOAD_ERR_CANT_WRITE:    // Wert: 7; Speichern der Datei auf die Festplatte ist fehlgeschlagen. Eingeführt in PHP 5.1.0.
+						case UPLOAD_ERR_CANT_WRITE:    // Wert: 7; Speichern der Datei auf die Festplatte ist fehlgeschlagen. Eingefï¿½hrt in PHP 5.1.0.
 							throw new RuntimeException(
 								Text::translate('COM_FTK_ERROR_FILE_UPLOAD_ERR_TMP_DIR_UNREADABLE_TEXT')
 							);
 
-						case UPLOAD_ERR_EXTENSION:    // Wert: 8; eine PHP Erweiterung hat den Upload der Datei gestoppt. Eingeführt in PHP 5.2.0.
-							// PHP bietet keine Möglichkeit an, um festzustellen, welche Erweiterung das Hochladen der Datei gestoppt hat.
-							// Überprüfung aller geladenen Erweiterungen mittels phpinfo() könnte helfen.
+						case UPLOAD_ERR_EXTENSION:    // Wert: 8; eine PHP Erweiterung hat den Upload der Datei gestoppt. Eingefï¿½hrt in PHP 5.2.0.
+							// PHP bietet keine Mï¿½glichkeit an, um festzustellen, welche Erweiterung das Hochladen der Datei gestoppt hat.
+							// ï¿½berprï¿½fung aller geladenen Erweiterungen mittels phpinfo() kï¿½nnte helfen.
 							throw new RuntimeException(
 								Text::translate('COM_FTK_ERROR_FILE_UPLOAD_ERR_INTERRUPTED_BY_PHP_EXTENSION_TEXT')
 							);

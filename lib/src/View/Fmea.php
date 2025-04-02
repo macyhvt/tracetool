@@ -1,14 +1,14 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Joomla\Uri\Uri;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View\Item as ItemView;
+use  \Messager;
+use  \Text;
+use  \View\Item as ItemView;
 use function is_a;
 use function is_null;
 
@@ -17,7 +17,7 @@ use function is_null;
  */
 class Fmea extends ItemView
 {
-	use \Nematrack\Traits\View\Fmea;
+	use \ \Traits\View\Fmea;
 
 	/**
 	 * {@inheritdoc}
@@ -50,7 +50,7 @@ class Fmea extends ItemView
 		$this->checkAccess();
 
 		// Prepare item for display.
-		if (is_a($this->item, sprintf('Nematrack\Entity\%s', ucfirst(mb_strtolower($this->get('name'))))) &&
+		if (is_a($this->item, sprintf(' \Entity\%s', ucfirst(mb_strtolower($this->get('name'))))) &&
 			$this->item->get($this->item->getPrimaryKeyName()) &&
 			$this->item->get('name')
 		) {
@@ -97,7 +97,7 @@ class Fmea extends ItemView
 
 		// If a user's flags don't satisfy the minimum requirement access is prohibited.
 		// Role "worker" is the minimum requirement to access an entity, whereas the role(s) to access a view may be different.
-		if ($this->user->getFlags() < \Nematrack\Access\User::ROLE_WORKER)
+		if ($this->user->getFlags() < \ \Access\User::ROLE_WORKER)
 		{
 			$redirect = new Uri(
 				$this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language)

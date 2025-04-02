@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -8,10 +8,10 @@ defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Helper\DatabaseHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View\Item as ItemView;
+use  \Helper\DatabaseHelper;
+use  \Messager;
+use  \Text;
+use  \View\Item as ItemView;
 use function array_combine;
 use function array_diff;
 use function array_fill;
@@ -28,7 +28,7 @@ use function property_exists;
  */
 class Organisation extends ItemView
 {
-	use \Nematrack\Traits\View\Organisation;
+	use \ \Traits\View\Organisation;
 
 	/**
 	 * {@inheritdoc}
@@ -61,7 +61,7 @@ class Organisation extends ItemView
 		$this->checkAccess();
 
 		// Prepare item for display.
-		if (is_a($item, sprintf('Nematrack\Entity\%s', ucfirst(mb_strtolower($this->get('name'))))) && $item->get('name'))
+		if (is_a($item, sprintf(' \Entity\%s', ucfirst(mb_strtolower($this->get('name'))))) && $item->get('name'))
 		{
 			// Check for item metadata being completely translated.
 			$model   = $this->model->getInstance('languages');
@@ -475,7 +475,7 @@ JS;
 
 		// If a user's flags don't satisfy the minimum requirement access is prohibited.
 		// Role "worker" is the minimum requirement to access an entity, whereas the role(s) to access a view may be different.
-		if ($this->user->getFlags() < \Nematrack\Access\User::ROLE_WORKER)
+		if ($this->user->getFlags() < \ \Access\User::ROLE_WORKER)
 		{
 			$redirect = new Uri(
 				$this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language)
@@ -539,10 +539,10 @@ JS;
 		}*/
 
 		// Only organisation members or Programmer(s) and the Superuser can access.
-		if (is_a($this->item, sprintf('Nematrack\Entity\%s', ucfirst(mb_strtolower($this->get('name')))))
+		if (is_a($this->item, sprintf(' \Entity\%s', ucfirst(mb_strtolower($this->get('name')))))
 			&& ($this->user->get('orgID') != '1'									// user must be a FRÖTEK-member ... 1 = FRÖTEK-organisation
 			&&  $this->user->get('orgID') != $this->item->get('orgID')				// the user's registered organisation ID must match the requested organisation's ID
-			&&  $this->user->getFlags() < \Nematrack\Access\User::ROLE_PROGRAMMER	// the user must be highly privileged (minimum Programmer)
+			&&  $this->user->getFlags() < \ \Access\User::ROLE_PROGRAMMER	// the user must be highly privileged (minimum Programmer)
 		)) {
 			$redirect = new Uri(
 				$this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language)

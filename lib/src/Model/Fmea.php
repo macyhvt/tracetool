@@ -1,13 +1,13 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Entity;
-use Nematrack\Model\Item as ItemModel;
+use  \Entity;
+use  \Model\Item as ItemModel;
 use function is_a;
 use function is_array;
 
@@ -37,7 +37,7 @@ class Fmea extends ItemModel
 	 *
 	 * @param   int $itemID
 	 *
-	 * @return  \Nematrack\Entity\Fmea
+	 * @return  \ \Entity\Fmea
 	 */
 	public function getItem(int $itemID) : Entity\Fmea
 	{
@@ -66,9 +66,9 @@ class Fmea extends ItemModel
 
 		$className = basename(str_replace('\\', '/', __CLASS__));
 
-		$row = (is_a($itemID, sprintf('Nematrack\Entity\%s', $className))
+		$row = (is_a($itemID, sprintf(' \Entity\%s', $className))
 			? $itemID
-			: (is_a($row, sprintf('Nematrack\Entity\%s', $className))
+			: (is_a($row, sprintf(' \Entity\%s', $className))
 				? $row
 				: (is_array($row)
 					? Entity::getInstance($className, ['id' => $itemID, 'language' => $this->get('language')])->bind($row)

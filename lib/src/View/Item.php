@@ -1,15 +1,15 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Exception;
 use Joomla\Uri\Uri;
-use Nematrack\Entity;
-use Nematrack\Helper\UriHelper;
-use Nematrack\View;
+use  \Entity;
+use  \Helper\UriHelper;
+use  \View;
 
 /**
  * Class description
@@ -219,7 +219,7 @@ JS;
 		}
 
 		// Ensure proper formData format.
-		if (is_a($this->user, 'Nematrack\Entity\User'))
+		if (is_a($this->user, ' \Entity\User'))
 		{
 			try
 			{

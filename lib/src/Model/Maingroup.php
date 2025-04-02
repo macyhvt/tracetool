@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -11,13 +11,13 @@ use Exception;
 use InvalidArgumentException;
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access;
-use Nematrack\App;
-use Nematrack\Entity;
-use Nematrack\Helper\DatabaseHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Item as ItemModel;
-use Nematrack\Text;
+use  \Access;
+use  \App;
+use  \Entity;
+use  \Helper\DatabaseHelper;
+use  \Messager;
+use  \Model\Item as ItemModel;
+use  \Text;
 use function array_filter;
 use function array_map;
 use function array_push;
@@ -57,9 +57,9 @@ class Maingroup extends ItemModel
 		}
 		$className = basename(str_replace('\\', '/', __CLASS__));
 
-		$row = (is_a($itemID, sprintf('Nematrack\Entity\%s', $className))
+		$row = (is_a($itemID, sprintf(' \Entity\%s', $className))
 			? $itemID
-			: (is_a($row, sprintf('Nematrack\Entity\%s', $className))
+			: (is_a($row, sprintf(' \Entity\%s', $className))
 				? $row
 				: (is_array($row)
 					? Entity::getInstance($className, ['id' => $itemID, 'language' => $this->get('language')])->bind($row)
@@ -110,7 +110,7 @@ class Maingroup extends ItemModel
 	{
 		echo (FTK_PROFILING) ? '<pre style="color:crimson">' . print_r(__METHOD__ . '()', true) . '</pre>' : null;
 
-		if (is_a($projectNumber, 'Nematrack\Entity\Project'))
+		if (is_a($projectNumber, ' \Entity\Project'))
 		{
 			$project = $projectNumber;
 		}
@@ -656,7 +656,7 @@ print_r($formData);exit;
 		if ($tmpProject = $this->getProjectByNumber(ArrayHelper::getValue($formData, 'number', null, 'STRING')))
 		{
 			// Compare both IDs. If they're different, then another item already uses the number this item shall use, which is not allowed.
-			if (\is_a($tmpProject, 'Nematrack\Entity\Project')
+			if (\is_a($tmpProject, ' \Entity\Project')
 			&& \is_int($tmpProject->get('proID'))
 			&& ($tmpProject->get('proID') != ArrayHelper::getValue($formData, 'proid', null, 'INT')))
 			) {
@@ -683,7 +683,7 @@ print_r($formData);exit;
 		if (isset($thisProject) && isset($thatProject))
 		{
 			// No conflict - No other project found.
-			if (!is_a($thatProject, 'Nematrack\Entity\Project'))
+			if (!is_a($thatProject, ' \Entity\Project'))
 			{
 				// Free memory.
 				unset($thatProject);

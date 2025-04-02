@@ -2,11 +2,11 @@
 // Register required libraries.
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
-use Nematrack\Access\User;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
+use  \Access\User;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Messager;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -26,7 +26,7 @@ $uid    = $input->getInt('uid');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -68,7 +68,7 @@ $xUserLangs = (array) $xUser->get('languages', []);
 $xUserLangs = array_keys($xUserLangs);
 
 // Block the attempt to access a non-existing user.
-if (!is_a($xUser, 'Nematrack\Entity\User')) :
+if (!is_a($xUser, ' \Entity\User')) :
 	Messager::setMessage([
 		'type' => 'notice',
 		'text' => sprintf(Text::translate('COM_FTK_HINT_USER_HAVING_ID_X_NOT_FOUND_TEXT', $this->language), $oid)

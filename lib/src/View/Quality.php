@@ -1,23 +1,23 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Joomla\Uri\Uri;
-use Nematrack\App;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View;
+use  \App;
+use  \Helper\UriHelper;
+use  \Messager;
+use  \Text;
+use  \View;
 
 /**
  * Class description
  */
 class Quality extends View
 {
-	use \Nematrack\Traits\View\Quality;
+	use \ \Traits\View\Quality;
 
 	/**
 	 * {@inheritdoc}
@@ -202,7 +202,7 @@ JS;
 		parent::checkAccess();
 
 		// Access control. If a user's flags don't satisfy the minimum requirement access is prohibited.
-		if ($this->user->getFlags() < \Nematrack\Access\User::ROLE_QUALITY_ASSURANCE)
+		if ($this->user->getFlags() < \ \Access\User::ROLE_QUALITY_ASSURANCE)
 		{
 			$redirect = new Uri(
 				$this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language)

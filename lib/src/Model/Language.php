@@ -1,13 +1,13 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Factory;
-use Nematrack\Model\Item as ItemModel;
+use  \Factory;
+use  \Model\Item as ItemModel;
 
 /**
  * Class description

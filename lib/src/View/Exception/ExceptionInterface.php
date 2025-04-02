@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View\Exception;
+namespace  \View\Exception;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');

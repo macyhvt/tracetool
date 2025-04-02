@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -11,15 +11,15 @@ use Joomla\Filesystem\File;
 use Joomla\Filesystem\Path;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\App;
-use Nematrack\Factory;
-use Nematrack\Helper\FilesystemHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Messager;
-use Nematrack\Model;
-use Nematrack\Text;
-use Nematrack\View;
-use Nematrack\View\Lizt as ListView;
+use  \App;
+use  \Factory;
+use  \Helper\FilesystemHelper;
+use  \Helper\UriHelper;
+use  \Messager;
+use  \Model;
+use  \Text;
+use  \View;
+use  \View\Lizt as ListView;
 use RecursiveDirectoryIterator;
 use RuntimeException;
 use Smalot\PdfParser\Parser;
@@ -330,7 +330,7 @@ class Tools extends ListView
 		    ...    => ...
 		    [abbr] => gnd
 		    [path] => L3d3dy9odGRvY3MvdzAxYjE4MzAvcHJvamVjdHMvZGV2Lm5lbWF0cmFjay5jb20vdG1wL2JhdGNoLXVwbG9hZC9nbmQvQUFBLkJCQi5DQy5DQ0NDQy4wMDA=
-		    [path] => /www/htdocs/w01b1830/projects/dev.nematrack.com/tmp/batch-upload/gnd/AAA.BBB.CC.CCCCC.000
+		    [path] => /www/htdocs/w01b1830/projects/dev. .com/tmp/batch-upload/gnd/AAA.BBB.CC.CCCCC.000
 		    [files] => Array
 		        (
 		            [0] => 009-3G2-3GB@AAA.BBB.CC.CCCCC.000.jpg
@@ -342,7 +342,7 @@ class Tools extends ListView
 
 	/**
 	 * {@inheritdoc}
-	 * @see \Nematrack\View\List::checkAccess()
+	 * @see \ \View\List::checkAccess()
 	 */
 	protected function checkAccess() : void
 	{
@@ -350,7 +350,7 @@ class Tools extends ListView
 
 		// If a user's flags don't satisfy the minimum requirement access is prohibited.
 		// Role "worker" is the minimum requirement to access an entity, whereas the role(s) to access a view may be different.
-		if ($this->user->getFlags() < \Nematrack\Access\User::ROLE_WORKER)
+		if ($this->user->getFlags() < \ \Access\User::ROLE_WORKER)
 		{
 			$redirect = new Uri(
 				$this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language)

@@ -1,17 +1,17 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Exception;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\App;
-use Nematrack\Entity;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \App;
+use  \Entity;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
 use Symfony\Component\String\Inflector\EnglishInflector as StringInflector;
 use function array_filter;
 use function array_walk;
@@ -237,7 +237,7 @@ class Processes extends ListModel
 		}
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_MANAGER)))
+		if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_MANAGER)))
 		{
 			$query
 			->where($db->qn('p.blocked') . ' = ' . $db->q('0'));
@@ -339,7 +339,7 @@ class Processes extends ListModel
 					$row['organisations'] = [];
 				}
 
-				// Extract tech_params string into array. (identical code as in {@link Nematrack\Entity\Process::bind()})
+				// Extract tech_params string into array. (identical code as in {@link  \Entity\Process::bind()})
 				if (isset($row['error_catalog']))
 				{
 					$tmp = [];
@@ -376,7 +376,7 @@ class Processes extends ListModel
 					$row['error_catalog'] = [];
 				}
 
-				// Extract tech_params string into array. (identical code as in {@link Nematrack\Entity\Process::bind()})
+				// Extract tech_params string into array. (identical code as in {@link  \Entity\Process::bind()})
 				if (isset($row['tech_params']))
 				{
 					$tmp = [];
@@ -643,7 +643,7 @@ class Processes extends ListModel
 		}
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_MANAGER)))
+		if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_MANAGER)))
 		{
 			$query
 			->where($db->qn('p.blocked') . ' = ' . $db->q('0'));
@@ -766,7 +766,7 @@ class Processes extends ListModel
 					$row['organisations'] = [];
 				}
 
-				// Extract tech_params string into array. (identical code as in {@link Nematrack\Entity\Process::bind()})
+				// Extract tech_params string into array. (identical code as in {@link  \Entity\Process::bind()})
 				if (isset($row['error_catalog']))
 				{
 					$tmp = [];
@@ -803,7 +803,7 @@ class Processes extends ListModel
 					$row['error_catalog'] = [];
 				}
 
-				// Extract tech_params string into array. (identical code as in {@link Nematrack\Entity\Process::bind()})
+				// Extract tech_params string into array. (identical code as in {@link  \Entity\Process::bind()})
 				if (isset($row['tech_params']))
 				{
 					$tmp = [];

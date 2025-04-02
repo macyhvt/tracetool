@@ -1,22 +1,22 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Joomla\Uri\Uri;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
-use Nematrack\View\Lizt as ListView;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
+use  \View\Lizt as ListView;
 
 /**
  * Class description
  */
 class Mgsearch extends ListView
 {
-	use \Nematrack\Traits\View\Projects;
+	use \ \Traits\View\Projects;
 
 	/**
 	 * {@inheritdoc}
@@ -35,7 +35,7 @@ class Mgsearch extends ListView
 		}
 
 		// Access control. Only registered and authenticated users can view content.
-		if (!is_a($this->user, 'Nematrack\Entity\User'))
+		if (!is_a($this->user, ' \Entity\User'))
 		{
 			$redirect = new Uri($this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language);
 
@@ -52,7 +52,7 @@ class Mgsearch extends ListView
 
 		// Access control. If a user's flags don't satisfy the minimum requirement access is prohibited.
 		// Role "worker" is the minimum requirement to access an entity, whereas the role(s) to access a view may be different.
-		if ($this->user->getFlags() < \Nematrack\Access\User::ROLE_WORKER)
+		if ($this->user->getFlags() < \ \Access\User::ROLE_WORKER)
 		{
 			$redirect = new Uri($this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language));
 
@@ -104,7 +104,7 @@ class Mgsearch extends ListView
 			break;
 
 			// Company members may see all items.
-			case (!$this->user->isGuest() && !$this->user->isCustomer() && !$this->user->isSupplier() && $this->user->getFlags() >= \Nematrack\Access\User::ROLE_WORKER) :
+			case (!$this->user->isGuest() && !$this->user->isCustomer() && !$this->user->isSupplier() && $this->user->getFlags() >= \ \Access\User::ROLE_WORKER) :
 				// FIXME - in model replace function 'getList' with this new implementation and test all js
 				if ($this->input->get('mgrp'))
 				{

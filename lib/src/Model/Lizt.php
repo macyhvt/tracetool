@@ -1,17 +1,17 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Exception;
 use Joomla\Registry\Registry;
-use Nematrack\App;
-use Nematrack\Entity;
-use Nematrack\Messager;
-use Nematrack\Model;
-use Nematrack\Text;
+use  \App;
+use  \Entity;
+use  \Messager;
+use  \Model;
+use  \Text;
 use function array_map;
 use function is_a;
 
@@ -129,7 +129,7 @@ abstract class Lizt extends Model
 
 		$entity = Entity::getInstance($this->get('tableName'), ['language' => $this->language]);
 
-		if (!is_a($entity, 'Nematrack\Entity'))
+		if (!is_a($entity, ' \Entity'))
 		{
 			return $id;
 		}
@@ -192,7 +192,7 @@ abstract class Lizt extends Model
 
 		$entity = Entity::getInstance($this->get('tableName'), ['language' => $this->language]);
 
-		if (!is_a($entity, 'Nematrack\Entity'))
+		if (!is_a($entity, ' \Entity'))
 		{
 			return $proIDs;
 		}
@@ -294,6 +294,6 @@ abstract class Lizt extends Model
 	{
 		echo (FTK_PROFILING) ? '<pre style="color:crimson">' . print_r(__METHOD__, true) . '</pre>' : null;
 
-		return (parent::userCanDelete() && App::getAppUser()->getFlags() > \Nematrack\Access\User::ROLE_MANAGER);
+		return (parent::userCanDelete() && App::getAppUser()->getFlags() > \ \Access\User::ROLE_MANAGER);
 	}
 }

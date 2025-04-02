@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Utility\Filter;
+namespace  \Utility\Filter;
 
 /* no direct script access */
 defined('_FTK_APP_') or die('403 FORBIDDEN');

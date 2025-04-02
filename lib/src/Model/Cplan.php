@@ -1,13 +1,13 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Entity;
-use Nematrack\Model\Item as ItemModel;
+use  \Entity;
+use  \Model\Item as ItemModel;
 use function is_a;
 use function is_array;
 
@@ -37,7 +37,7 @@ class Cplan extends ItemModel
 	 *
 	 * @param   int $itemID  Unique item ID
 	 *
-	 * @return  \Nematrack\Entity\Cplan
+	 * @return  \ \Entity\Cplan
 	 */
 	public function getItem(int $itemID) : Entity\Cplan
 	{
@@ -66,9 +66,9 @@ class Cplan extends ItemModel
 
 		$className = basename(str_replace('\\', '/', __CLASS__));
 
-		$row = (is_a($itemID, sprintf('Nematrack\Entity\%s', $className))
+		$row = (is_a($itemID, sprintf(' \Entity\%s', $className))
 			? $itemID
-			: (is_a($row, sprintf('Nematrack\Entity\%s', $className))
+			: (is_a($row, sprintf(' \Entity\%s', $className))
 				? $row
 				: (is_array($row)
 					? Entity::getInstance($className, ['id' => $itemID, 'language' => $this->get('language')])->bind($row)
@@ -91,7 +91,7 @@ class Cplan extends ItemModel
 	 *
 	 * @param   int $procID  Unique process ID
 	 *
-	 * @return  \Nematrack\Entity\Cplan
+	 * @return  \ \Entity\Cplan
 	 */
 	public function getItemByProcessID(int $procID) : Entity\Cplan
 	{
@@ -120,9 +120,9 @@ class Cplan extends ItemModel
 
 		$className = basename(str_replace('\\', '/', __CLASS__));
 
-		$row = (is_a($procID, sprintf('Nematrack\Entity\%s', $className))
+		$row = (is_a($procID, sprintf(' \Entity\%s', $className))
 			? $procID
-			: (is_a($row, sprintf('Nematrack\Entity\%s', $className))
+			: (is_a($row, sprintf(' \Entity\%s', $className))
 				? $row
 				: (is_array($row)
 					? Entity::getInstance($className, ['id' => $procID, 'language' => $this->get('language')])->bind($row)

@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -10,13 +10,13 @@ use DateTimeZone;
 use Joomla\Registry\Registry;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\App;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
-use Nematrack\View;
+use  \App;
+use  \Helper\UriHelper;
+use  \Helper\UserHelper;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
+use  \View;
 use stdClass;
 use function is_a;
 use function property_exists;
@@ -26,7 +26,7 @@ use function property_exists;
  */
 class Statistics extends View
 {
-	use \Nematrack\Traits\View\Statistics;
+	use \ \Traits\View\Statistics;
 
 	/**
 	 * {@inheritdoc}
@@ -48,7 +48,7 @@ class Statistics extends View
 		} */
 
 		// Access control. Only registered and authenticated users can view content.
-		if (!is_a($this->user, 'Nematrack\Entity\User'))
+		if (!is_a($this->user, ' \Entity\User'))
 		{
 			$redirect = new Uri($this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language);
 
@@ -65,7 +65,7 @@ class Statistics extends View
 
 		// Access control. If a user's flags don't satisfy the minimum requirement access is prohibited.
 		// Role "worker" is the minimum requirement to access an entity, whereas the role(s) to access a view may be different.
-		if ($this->user->getFlags() < \Nematrack\Access\User::ROLE_WORKER)
+		if ($this->user->getFlags() < \ \Access\User::ROLE_WORKER)
 		{
 			$redirect = new Uri(
 				$this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language)
@@ -229,7 +229,7 @@ class Statistics extends View
 					: $this->model->getInstance('project', ['language' => $this->model->get('language')])->getItem(0)
 				);
 
-				if (!is_a($project, 'Nematrack\Entity\Project') || !$project->get('number'))
+				if (!is_a($project, ' \Entity\Project') || !$project->get('number'))
 				{
 					// TODO - translate
 					throw new Exception(sprintf('Unknown project: %s', $proNum), 404);

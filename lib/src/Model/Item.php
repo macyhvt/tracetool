@@ -1,12 +1,12 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined('_FTK_APP_') or die('403 FORBIDDEN');
 
-use Nematrack\App;
-use Nematrack\Model;
+use  \App;
+use  \Model;
 
 /**
  * Class description
@@ -36,7 +36,7 @@ abstract class Item extends Model
 	 *
 	 * @param   int $itemID
 	 *
-	 * @return  \Nematrack\Entity
+	 * @return  \ \Entity
 	 */
 	abstract public function getItem(int $itemID);
 
@@ -49,7 +49,7 @@ abstract class Item extends Model
 	{
 		echo (FTK_PROFILING) ? '<pre style="color:crimson">' . print_r(__METHOD__, true) . '</pre>' : null;
 
-		$canDelete = (parent::userCanDelete() && App::getAppUser()->getFlags() > \Nematrack\Access\User::ROLE_MANAGER);
+		$canDelete = (parent::userCanDelete() && App::getAppUser()->getFlags() > \ \Access\User::ROLE_MANAGER);
 
 		return $canDelete;
 	}

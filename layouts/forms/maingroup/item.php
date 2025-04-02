@@ -1,12 +1,12 @@
 <?php
 // Register required libraries.
 use Joomla\Uri\Uri;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Helper\UserHelper;
+use  \Messager;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -25,7 +25,7 @@ $proID  = $input->getInt('proid', 0);
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -46,7 +46,7 @@ $canDelete = true;
 $item = $view->get('item');
 
 // Block the attempt to open a non-existing project.
-if (!is_a($item, 'Nematrack\Entity\Project') || (is_a($item, 'Nematrack\Entity\Project') && is_null($item->get('proID')))) :
+if (!is_a($item, ' \Entity\Project') || (is_a($item, ' \Entity\Project') && is_null($item->get('proID')))) :
     Messager::setMessage([
         'type' => 'notice',
         'text' => sprintf(Text::translate('COM_FTK_HINT_PROJECT_HAVING_ID_X_NOT_FOUND_TEXT', $this->language), $proID)
@@ -218,7 +218,7 @@ $this->isDeleted  = $this->item->get('trashed')  == '1';
 			<?php endif; ?>
 
 			<?php if (!$this->isArchived && !$this->isBlocked && !$this->isDeleted) : ?>
-			<?php 	if (UserHelper::isFroetekOrNematechMember($this->user) && $this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : // Editing is granted to privileged FRÖTEK- and NEMATECH-users only ?>
+			<?php 	if (UserHelper::isFroetekOrNematechMember($this->user) && $this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : // Editing is granted to privileged FRÖTEK- and NEMATECH-users only ?>
 			<?php // E D I T - button ?>
 			<div class="d-inline-block align-top">
 				<div class="input-group">
@@ -276,7 +276,7 @@ $this->isDeleted  = $this->item->get('trashed')  == '1';
 			</div>
 
 			<?php /*   T O O L B A R   */ ?>
-			<?php if (UserHelper::isFroetekOrNematechMember($this->user) && $this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : // Management is granted to privileged FRÖTEK- and NEMATECH-users only ?>
+			<?php if (UserHelper::isFroetekOrNematechMember($this->user) && $this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : // Management is granted to privileged FRÖTEK- and NEMATECH-users only ?>
 			<div class="position-absolute" style="z-index:1; top:0; right:0; padding-right:15px">
 				<div class="align-middle text-right">
 					<?php // (U N) B L O C K - button ?>
@@ -319,7 +319,7 @@ $this->isDeleted  = $this->item->get('trashed')  == '1';
 					<?php endif; // END: ACL-Check ?>
 
 					<?php // (U N) A R C H I V A T E - button ?>
-					<?php if (FALSE && $this->user->getFlags() >= \Nematrack\Access\User::ROLE_ADMINISTRATOR) : // (Un)Publishing is granted to higher privileged users only ?>
+					<?php if (FALSE && $this->user->getFlags() >= \ \Access\User::ROLE_ADMINISTRATOR) : // (Un)Publishing is granted to higher privileged users only ?>
 					<?php	if (!$this->isDeleted) : ?>
 					<form action="<?php echo View::getInstance('projects', ['language' => $this->language])->getRoute(); ?>"
 						  method="post"
@@ -364,7 +364,7 @@ $this->isDeleted  = $this->item->get('trashed')  == '1';
 					<?php endif; // END: ACL-Check ?>
 
 					<?php // (U N) D E L E T E - button ?>
-					<?php if ($this->user->getFlags() >= \Nematrack\Access\User::ROLE_ADMINISTRATOR) : // (Un)Deleting is granted to higher privileged users only ?>
+					<?php if ($this->user->getFlags() >= \ \Access\User::ROLE_ADMINISTRATOR) : // (Un)Deleting is granted to higher privileged users only ?>
 					<form action="<?php echo View::getInstance('projects', ['language' => $this->language])->getRoute(); ?>"
 						  method="post"
 						  name="<?php echo sprintf('delete%sForm', ucfirst($view->get('name'))); ?>"
@@ -417,7 +417,7 @@ $this->isDeleted  = $this->item->get('trashed')  == '1';
     <hr>
 
 	<?php if (!$this->isArchived && !$this->isBlocked && !$this->isDeleted) : // Managing is possible to active items only ?>
-	<?php 	if ($this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : // Managing is granted to privileged users only ?>
+	<?php 	if ($this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : // Managing is granted to privileged users only ?>
 		<?php if (!count($team = $this->item->get('organisations'))): ?>
 			<?php $messages = [
 				Text::translate('COM_FTK_HINT_PROJECT_HAS_NO_TEAM_TEXT', $this->language)
@@ -450,7 +450,7 @@ $this->isDeleted  = $this->item->get('trashed')  == '1';
 	<?php // Inner toolbar (manage team members, project matrix) ?>
 	<div class="btn-toolbar float-right mt-md-1 mt-lg-2 pt-1" role="toolbar" aria-label="<?php echo Text::translate('COM_FTK_LABEL_TOOLBAR_TEXT', $this->language); ?>">
 		<div class="btn-group" role="group" aria-label="<?php echo Text::translate('COM_FTK_LABEL_TOOLS_GROUP_TEXT', $this->language); ?>">
-			<?php if ($this->user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?>
+			<?php if ($this->user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?>
 			<a href="<?php echo UriHelper::osSafe( UriHelper::fixURL(sprintf( 'index.php?hl=%s&view=%s&layout=team&proid=%d', $this->language, $view->get('name'), $this->item->get('proID') ))); ?>"
 			   role="button"
 			   class="btn btn-link"

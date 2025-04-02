@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -15,17 +15,17 @@ use Joomla\Filter\InputFilter;
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
 use JsonException;
-use Nematrack\App;
-use Nematrack\Entity;
-use Nematrack\Helper\DatabaseHelper;
-use Nematrack\Helper\FilesystemHelper;
-use Nematrack\Helper\ImageHelper;
-use Nematrack\Helper\StringHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Item as ItemModel;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \App;
+use  \Entity;
+use  \Helper\DatabaseHelper;
+use  \Helper\FilesystemHelper;
+use  \Helper\ImageHelper;
+use  \Helper\StringHelper;
+use  \Helper\UriHelper;
+use  \Messager;
+use  \Model\Item as ItemModel;
+use  \Model\Lizt as ListModel;
+use  \Text;
 use RuntimeException;
 use Symfony\Component\String\Inflector\EnglishInflector as StringInflector;
 use function array_column;
@@ -186,9 +186,9 @@ class Article extends ItemModel
 
 		$className = basename(str_replace('\\', '/', __CLASS__));
 
-		$row = (is_a($itemID, sprintf('Nematrack\Entity\%s', $className))
+		$row = (is_a($itemID, sprintf(' \Entity\%s', $className))
 			? $itemID
-			: (is_a($row, sprintf('Nematrack\Entity\%s', $className))
+			: (is_a($row, sprintf(' \Entity\%s', $className))
 				? $row
 				: (is_array($row)
 					? Entity::getInstance($className, ['id' => $itemID, 'language' => $this->get('language')])->bind($row)
@@ -215,7 +215,7 @@ class Article extends ItemModel
 	{
 		echo (FTK_PROFILING) ? '<pre style="color:crimson">' . print_r(__METHOD__ . '()', true) . '</pre>' : null;
 
-		if (is_a($articleNumber, 'Nematrack\Entity\Article'))
+		if (is_a($articleNumber, ' \Entity\Article'))
 		{
 			$article = $articleNumber;
 		}
@@ -227,7 +227,7 @@ class Article extends ItemModel
 				$articleNumber
 			);
 
-			// Second, load the article from the database. Return value is instance of Nematrack\Entity\Article.
+			// Second, load the article from the database. Return value is instance of  \Entity\Article.
 			$article = $this->getItem($artID);
 		}
 
@@ -1668,7 +1668,7 @@ endif;
 		{
 			// Compare both IDs.
 			// If they're different, then another item already uses the number this item shall use, which is not allowed.
-			if (is_a($tmpArticle, 'Nematrack\Entity\Article')
+			if (is_a($tmpArticle, ' \Entity\Article')
 			&&  is_int($tmpArticle->get('artID'))
 			&& ($tmpArticle->get('artID') != ArrayHelper::getValue($formData, 'aid', null, 'INT'))
 			) {
@@ -2160,7 +2160,7 @@ endif;
 		// but it serves us further article data required to call the files' deletion function below.
 		$item = $this->getItem($artID);
 
-		if (!is_a($item, 'Nematrack\Entity\Article') || !$item->get('artID'))
+		if (!is_a($item, ' \Entity\Article') || !$item->get('artID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -2247,7 +2247,7 @@ endif;
 		// but it serves us further article data required to call the files' deletion function below.
 		$item = $this->getItem($artID);
 
-		if (!is_a($item, 'Nematrack\Entity\Article') || !$item->get('artID'))
+		if (!is_a($item, ' \Entity\Article') || !$item->get('artID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -2333,7 +2333,7 @@ endif;
 		// but it serves us further article data required to call the files' deletion function below.
 		$article = $this->getItem($artID);
 
-		if (!is_a($article, 'Nematrack\Entity\Article') || !$article->get('artID'))
+		if (!is_a($article, ' \Entity\Article') || !$article->get('artID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -2420,7 +2420,7 @@ endif;
 		// but it serves us further article data required to call the files' deletion function below.
 		$article = $this->getItem($artID);
 
-		if (!is_a($article, 'Nematrack\Entity\Article') || !$article->get('artID'))
+		if (!is_a($article, ' \Entity\Article') || !$article->get('artID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -2506,7 +2506,7 @@ endif;
 		// but it serves us further article data required to call the files' deletion function below.
 		$article = $this->getItem($artID);
 
-		if (!is_a($article, 'Nematrack\Entity\Article') || !$article->get('artID'))
+		if (!is_a($article, ' \Entity\Article') || !$article->get('artID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -2602,7 +2602,7 @@ endif;
 		// but it serves us further article data required to call the files' deletion function below.
 		$article = $this->getItem($artID);
 
-		if (!is_a($article, 'Nematrack\Entity\Article') || !$article->get('artID'))
+		if (!is_a($article, ' \Entity\Article') || !$article->get('artID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -3100,7 +3100,7 @@ endif;
 	 *                 - the md5 hash of uploaded file after storing
 	 *                 - array of relative paths to generated thumbnail file(s)
 	 *
-	 * @todo    Refactor into {@see \Nematrack\Utility\Dummy} class
+	 * @todo    Refactor into {@see \ \Utility\Dummy} class
 	 */
 	protected function createDummyFiles(string $articleNumber, array $numbers = []) : array
 	{
@@ -3627,7 +3627,7 @@ endif;
 						 */
 						if (!preg_match('/' . FTKREGEX_DRAWING_FILE . '/', $fname = ArrayHelper::getValue(array_column($uplDrawings, 'name'), $uploadID)))
 						{
-							$tmpProcess = $this->getInstance('process', ['language' => $this->language])->getItem((int) $procID);	// will be an instance of Nematrack\Entity\Process
+							$tmpProcess = $this->getInstance('process', ['language' => $this->language])->getItem((int) $procID);	// will be an instance of  \Entity\Process
 
 							throw new RuntimeException(sprintf(Text::translate('COM_FTK_ERROR_FILE_UPLOAD_ERR_INVALID_NAMING_SCHEME_TEXT', $this->language), $tmpProcess->get('name')));
 						}

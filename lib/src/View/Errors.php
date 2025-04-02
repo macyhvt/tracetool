@@ -1,21 +1,21 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
 use Joomla\Uri\Uri;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View\Lizt as ListView;
+use  \Messager;
+use  \Text;
+use  \View\Lizt as ListView;
 
 /**
  * Class description
  */
 class Errors extends ListView
 {
-	use \Nematrack\Traits\View\Roles;
+	use \ \Traits\View\Roles;
 
 	/**
 	 * {@inheritdoc}
@@ -51,7 +51,7 @@ class Errors extends ListView
 
 		// If a user's flags don't satisfy the minimum requirement access is prohibited.
 		// Role "worker" is the minimum requirement to access an entity, whereas the role(s) to access a view may be different.
-		if ($this->user->getFlags() < \Nematrack\Access\User::ROLE_WORKER)
+		if ($this->user->getFlags() < \ \Access\User::ROLE_WORKER)
 		{
 			$redirect = new Uri(
 				$this->input->server->getUrl('HTTP_REFERER', $this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language)

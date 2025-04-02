@@ -1,7 +1,7 @@
 <?php
 // Register required libraries.
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Text;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -28,7 +28,7 @@ $isPrint  = $task === 'print';
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');

@@ -1,6 +1,6 @@
 <?php // lib\src\Defines.php
 /* define application namespace */
-namespace Nematrack;
+namespace  ;
 
 /* no direct script access */
 defined ('_FTK_APP_')     OR define('_FTK_APP_', 1);

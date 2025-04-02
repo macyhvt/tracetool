@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Service;
+namespace  \Service;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -13,14 +13,14 @@ use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
 use JsonException;
 use Monolog\Logger;
-use Nematrack\App;
-use Nematrack\Connectivity\Machine;
-use Nematrack\Factory;
-use Nematrack\Utility\Filter\InputFilter;
-use Nematrack\Messager;
-use Nematrack\Model;
-use Nematrack\Service;
-use Nematrack\Text;
+use  \App;
+use  \Connectivity\Machine;
+use  \Factory;
+use  \Utility\Filter\InputFilter;
+use  \Messager;
+use  \Model;
+use  \Service;
+use  \Text;
 use Throwable;
 use function is_a;
 
@@ -113,7 +113,7 @@ class Api extends Service
 		{
 			$model = Model::getInstance($model, ['language' => $input->getWord('hl', '')]);
 
-			if (!is_a($model, 'Nematrack\Model'))
+			if (!is_a($model, ' \Model'))
 			{
 				http_response_code( http_response_code() ?: '500' );	// means: "Internal server error"
 
@@ -565,8 +565,8 @@ class Api extends Service
 								// echo '<pre>' . print_r('ELSE', true) . '</pre>';
 
 								// Approve only if both the worker's userID + the quality manager's userID are available.
-								if ($approverID/* && is_a($approver, 'Nematrack\Entity\User')*/ &&
-									$permiteeID/* && is_a($approver, 'Nematrack\Entity\User')*/)
+								if ($approverID/* && is_a($approver, ' \Entity\User')*/ &&
+									$permiteeID/* && is_a($approver, ' \Entity\User')*/)
 								{
 									// @debug
 //									echo '<pre>' . print_r('ELSE > IF', true) . '</pre>'; die;

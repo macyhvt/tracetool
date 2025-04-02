@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -11,14 +11,14 @@ use Exception;
 use InvalidArgumentException;
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access;
-use Nematrack\App;
-use Nematrack\Entity;
-use Nematrack\Helper\DatabaseHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Item as ItemModel;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Access;
+use  \App;
+use  \Entity;
+use  \Helper\DatabaseHelper;
+use  \Messager;
+use  \Model\Item as ItemModel;
+use  \Model\Lizt as ListModel;
+use  \Text;
 use function array_filter;
 use function array_key_exists;
 use function array_map;
@@ -57,7 +57,7 @@ class Organisation extends ItemModel
 	 *
 	 * @param   int $itemID
 	 *
-	 * @return  \Nematrack\Entity\Organisation
+	 * @return  \ \Entity\Organisation
 	 */
 	public function getItem(int $itemID) : Entity\Organisation
 	{
@@ -79,9 +79,9 @@ class Organisation extends ItemModel
 
 		$className = basename(str_replace('\\', '/', __CLASS__));
 
-		$row = (is_a($itemID, sprintf('Nematrack\Entity\%s', $className))
+		$row = (is_a($itemID, sprintf(' \Entity\%s', $className))
 			? $itemID
-			: (is_a($row, sprintf('Nematrack\Entity\%s', $className))
+			: (is_a($row, sprintf(' \Entity\%s', $className))
 				? $row
 				: (is_array($row)
 					? Entity::getInstance($className, ['id' => $itemID, 'language' => $this->get('language')])->bind($row)
@@ -225,7 +225,7 @@ class Organisation extends ItemModel
 		if ($user->getFlags() < Access\User::ROLE_PROGRAMMER)
 		{
 			$query
-			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@nematrack.com')) // super user
+			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@ .com')) // super user
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%example.com'))     // test account(s)
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%brackebusch%'))    // programmer
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%test%'))           // automated testing user
@@ -468,7 +468,7 @@ class Organisation extends ItemModel
 		->where($db->qn('pm.language') . ' = ' . $db->q($this->language));
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		/* if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+		/* if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
 		{
 			$query
 			->where($db->qn('p.blocked') . ' = ' . $db->q('0'));
@@ -614,7 +614,7 @@ class Organisation extends ItemModel
 		->where($db->qn('pm.language') . ' = ' . $db->q($this->language));
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		/* if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+		/* if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
 		{
 			$query
 			->where($db->qn('p.blocked') . ' = ' . $db->q('0'));
@@ -788,7 +788,7 @@ class Organisation extends ItemModel
             ->where($db->qn('pm.language') . ' = ' . $db->q($this->language));
 
         // Only users with higher privileges must be allowed to see blocked items.
-        /* if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+        /* if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
         {
             $query
             ->where($db->qn('p.blocked') . ' = ' . $db->q('0'));
@@ -1021,7 +1021,7 @@ class Organisation extends ItemModel
 		if ($user->getFlags() < Access\User::ROLE_PROGRAMMER)
 		{
 			$query
-			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@nematrack.com')) // super user
+			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@ .com')) // super user
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%example.com'))     // test account(s)
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%brackebusch%'))    // programmer
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%test%'))           // automated testing user
@@ -1186,7 +1186,7 @@ class Organisation extends ItemModel
 		if ($user->getFlags() < Access\User::ROLE_PROGRAMMER)
 		{
 			$query
-			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@nematrack.com')) // super user
+			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@ .com')) // super user
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%example.com'))     // test account(s)
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%brackebusch%'))    // programmer
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%test%'))           // automated testing user
@@ -1306,7 +1306,7 @@ class Organisation extends ItemModel
 		if ($user->getFlags() < Access\User::ROLE_PROGRAMMER)
 		{
 			$query
-			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@nematrack.com')) // super user
+			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@ .com')) // super user
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%example.com'))     // test account(s)
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%brackebusch%'))    // programmer
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%test%'))           // automated testing user
@@ -1470,7 +1470,7 @@ class Organisation extends ItemModel
 		if ($user->getFlags() < Access\User::ROLE_PROGRAMMER)
 		{
 			$query
-			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@nematrack.com')) // super user
+			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('administration@ .com')) // super user
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%example.com'))     // test account(s)
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%brackebusch%'))    // programmer
 			->where($db->qn('u.email') . ' NOT LIKE ' . $db->q('%test%'))           // automated testing user
@@ -1722,7 +1722,7 @@ class Organisation extends ItemModel
 		if ($tmpOrganisation = $this->getOrganisationByName(ArrayHelper::getValue($formData, 'name', '', 'STRING')))
 		{
 			// Compare both IDs. If they're different, then another item already uses the name this item shall use, which is not allowed.
-			if (is_a($tmpOrganisation, 'Nematrack\Entity\Organisation')
+			if (is_a($tmpOrganisation, ' \Entity\Organisation')
 			&& is_int($tmpOrganisation->get('orgID'))
 			&& ($tmpOrganisation->get('orgID') != ArrayHelper::getValue($formData, 'oid'))
 			) {
@@ -1867,7 +1867,7 @@ class Organisation extends ItemModel
 		// Load organisation from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($orgID);
 
-		if (!is_a($item, 'Nematrack\Entity\Organisation') || !$item->get('orgID'))
+		if (!is_a($item, ' \Entity\Organisation') || !$item->get('orgID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -1950,7 +1950,7 @@ class Organisation extends ItemModel
 		// Load organisation from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($orgID);
 
-		if (!is_a($item, 'Nematrack\Entity\Organisation') || !$item->get('orgID'))
+		if (!is_a($item, ' \Entity\Organisation') || !$item->get('orgID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -2035,7 +2035,7 @@ class Organisation extends ItemModel
 		// Load organisation from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($orgID);
 
-		if (!is_a($item, 'Nematrack\Entity\Organisation') || !$item->get('orgID'))
+		if (!is_a($item, ' \Entity\Organisation') || !$item->get('orgID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -2121,7 +2121,7 @@ class Organisation extends ItemModel
 		// Load organisation from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($orgID);
 
-		if (!is_a($item, 'Nematrack\Entity\Organisation') || !$item->get('orgID'))
+		if (!is_a($item, ' \Entity\Organisation') || !$item->get('orgID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -2206,7 +2206,7 @@ class Organisation extends ItemModel
 		// Load organisation from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($orgID);
 
-		if (!is_a($item, 'Nematrack\Entity\Organisation') || !$item->get('orgID'))
+		if (!is_a($item, ' \Entity\Organisation') || !$item->get('orgID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',
@@ -2313,7 +2313,7 @@ class Organisation extends ItemModel
 		// Load organisation from db first. This not only prevents us from unnecessary function calls, but it serves us further article data required to call the files deletion function below.
 		$item = $this->getItem($orgID);
 
-		if (!is_a($item, 'Nematrack\Entity\Organisation') || !$item->get('orgID'))
+		if (!is_a($item, ' \Entity\Organisation') || !$item->get('orgID'))
 		{
 			Messager::setMessage([
 				'type' => 'error',

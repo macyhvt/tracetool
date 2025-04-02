@@ -2,13 +2,13 @@
 // Register required libraries.
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access\User;
-use Nematrack\Entity;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\StringHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Access\User;
+use  \Entity;
+use  \Helper\LayoutHelper;
+use  \Helper\StringHelper;
+use  \Helper\UriHelper;
+use  \Model\Lizt as ListModel;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -379,7 +379,7 @@ $tabindex   = 0;
 
 				<?php if (0 && !$item->get('trashed')) : // DiSABLED on 20230430 because this way it was possible to edit whereas the item view did not provide the edit button ?>
 				<div class="col-auto row-actions px-0 px-sm-auto">
-					<?php if (is_a($this->user, 'Nematrack\Entity\User') && $this->user->getFlags() >= User::ROLE_MANAGER) : ?>
+					<?php if (is_a($this->user, ' \Entity\User') && $this->user->getFlags() >= User::ROLE_MANAGER) : ?>
 					<a href="<?php echo UriHelper::osSafe( UriHelper::fixURL( sprintf( 'index.php?hl=%s&view=cplan&layout=edit&id=%d&return=%s',
 							$this->language,
 							(int) $item->get($item->getPrimaryKeyName()),

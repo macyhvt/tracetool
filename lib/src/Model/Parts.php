@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\Model;
+namespace  \Model;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -11,13 +11,13 @@ use Exception;
 use Joomla\Filter\InputFilter;
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
-use Nematrack\Access;
-use Nematrack\App;
-use Nematrack\Entity;
-use Nematrack\Helper\UserHelper;
-use Nematrack\Messager;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
+use  \Access;
+use  \App;
+use  \Entity;
+use  \Helper\UserHelper;
+use  \Messager;
+use  \Model\Lizt as ListModel;
+use  \Text;
 use Symfony\Component\String\Inflector\EnglishInflector as StringInflector;
 use function array_key_exists;
 use function array_map;
@@ -152,7 +152,7 @@ class Parts extends ListModel
 
 		// Only superusers must be allowed to see deleted items.
 		// TODO - migrate to use JDatabaseQuery
-		if (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_SUPERUSER))
+		if (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_SUPERUSER))
 		{
 			$query .= 'AND `p`.`trashed` IN(' . implode(',', ['0','1']) . ') ';
 		}
@@ -162,7 +162,7 @@ class Parts extends ListModel
 		}
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_MANAGER)))
+		if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_MANAGER)))
 		{
 			$query .= 'AND `p`.`blocked` = ' . $db->q('0') . ' ';
 			// $query .= 'AND `a`.`blocked` = ' . $db->q('0');	// Shouldn't this be considered too?
@@ -388,7 +388,7 @@ class Parts extends ListModel
 		}
 
 		// Only superusers must be allowed to see deleted items.
-		if (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_SUPERUSER))
+		if (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_SUPERUSER))
 		{
 			$query
 			->where($db->qn('p.trashed') . ' IN(' . implode(',', ['0','1']) . ')');
@@ -400,7 +400,7 @@ class Parts extends ListModel
 		}
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_MANAGER)))
+		if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_MANAGER)))
 		{
 			$query
 			->where($db->qn('p.blocked') . ' = ' . $db->q('0'))
@@ -580,7 +580,7 @@ class Parts extends ListModel
 		);
 
 		// Only superusers must be allowed to see deleted items.
-		if (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_SUPERUSER))
+		if (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_SUPERUSER))
 		{
 			$query
 			->where($db->qn('p.trashed') . ' IN(' . implode(',', ['0','1']) . ')');
@@ -592,7 +592,7 @@ class Parts extends ListModel
 		}
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+		if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
 		{
 			$query
 			// ->where($db->qn('p.blocked') . ' = ' . $db->q('0'))	// Shouldn't this be considered too?
@@ -958,7 +958,7 @@ class Parts extends ListModel
 		->where($db->qn('p.artID') . ' IN (' . $sub . ')');
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+		if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
 		{
 			$query
 			->where($db->qn('p.blocked') . ' = ' . $db->q('0'));
@@ -1155,7 +1155,7 @@ class Parts extends ListModel
 		}
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+		if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
 		{
 			$query
 			->where($db->qn('p.blocked') . ' = ' . $db->q('0'));
@@ -1252,7 +1252,7 @@ class Parts extends ListModel
 		->where($db->qn('p.artID') . ' IN (' . $sub . ')');
 
 		// Only users with higher privileges must be allowed to see blocked items.
-		if (!is_a($user, 'Nematrack\Entity\User') || (is_a($user, 'Nematrack\Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
+		if (!is_a($user, ' \Entity\User') || (is_a($user, ' \Entity\User') && ($user->getFlags() < Access\User::ROLE_PROGRAMMER)))
 		{
 			$query
 			->where($db->qn('p.blocked') . ' = ' . $db->q('0'));
@@ -1391,7 +1391,7 @@ class Parts extends ListModel
 
 		// Configure resultset according to from user configuration (fall back to app default).
 		// Get user profile and check if its selected app language differs from currently detected language. If so, switch app language to user preference.
-		if (is_a($user, 'Nematrack\Entity\User'))
+		if (is_a($user, ' \Entity\User'))
 		{
 			$userProfile = new Registry(UserHelper::getProfile($user));
 

@@ -1,12 +1,12 @@
 <?php
 // Register required libraries.
 use Joomla\Registry\Registry;
-use Nematrack\Access\User;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Model\Lizt as ListModel;
-use Nematrack\Text;
-use Nematrack\View;
+use  \Access\User;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Model\Lizt as ListModel;
+use  \Text;
+use  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -28,7 +28,7 @@ $oid    = $input->getInt('oid');
 <?php /* Access check */
 $formData = null;
 
-if (is_a($user, 'Nematrack\Entity\User')) :
+if (is_a($user, ' \Entity\User')) :
 	try
 	{
 		$formData = $user->__get('formData');
@@ -372,7 +372,7 @@ $tabindex  = 0;
 						<i class="fas fa-pencil-alt"></i>
 						<span class="sr-only"><?php echo Text::translate('COM_FTK_LINK_TITLE_USER_EDIT_THIS_TEXT', $this->language); ?></span>
 					</a>
-					<?php //if ($user->getFlags() >= \Nematrack\Access\User::ROLE_ADMINISTRATOR) : // Deletion is permitted to (super)admins only ?>
+					<?php //if ($user->getFlags() >= \ \Access\User::ROLE_ADMINISTRATOR) : // Deletion is permitted to (super)admins only ?>
 					<form action="<?php echo View::getInstance('users', ['language' => $this->language])->getRoute(); ?>"
 						  method="post"
 						  name="deleteUserForm-<?php echo $i; ?>"

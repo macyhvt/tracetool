@@ -1,13 +1,13 @@
 <?php
 /* define application namespace */
-namespace Nematrack;
+namespace  ;
 
 /* no direct script access */
 defined('_FTK_APP_') or die('403 FORBIDDEN');
 
 use Joomla\Utilities\ArrayHelper;
 use Locale;
-use Nematrack\Helper\LayoutHelper;
+use  \Helper\LayoutHelper;
 use Symfony\Component\HttpFoundation\Session\Session;
 use function array_combine;
 use function array_fill;

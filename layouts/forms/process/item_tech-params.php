@@ -1,10 +1,10 @@
 <?php
 // Register required libraries.
 use Joomla\Registry\Registry;
-use Nematrack\Factory;
-use Nematrack\Helper\LayoutHelper;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Text;
+use  \Factory;
+use  \Helper\LayoutHelper;
+use  \Helper\UriHelper;
+use  \Text;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
@@ -21,7 +21,7 @@ defined ('_FTK_APP_') OR die('403 FORBIDDEN'); ?>
 <?php // E D I T - button for active item ?>
 <?php if (!$this->isDeleted) : ?>
 <?php 	if (!$this->isBlocked) : ?>
-<?php 		if ($user->getFlags() >= \Nematrack\Access\User::ROLE_MANAGER) : ?>
+<?php 		if ($user->getFlags() >= \ \Access\User::ROLE_MANAGER) : ?>
 <a href="<?php echo UriHelper::osSafe( UriHelper::fixURL(sprintf( 'index.php?hl=%s&view=process&layout=edit&pid=%d', $this->language, $this->item->get('procID') ))); ?>#tech-params"
    role="button"
    class="btn btn-sm btn-info<?php echo (is_countable($this->techParams) && !count($this->techParams)) ? ' mt-3' : ' mb-3'; ?>"

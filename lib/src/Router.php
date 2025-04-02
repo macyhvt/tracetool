@@ -1,11 +1,11 @@
 <?php
 /* define application namespace */
-namespace Nematrack;
+namespace  ;
 
 /* no direct script access */
 defined('_FTK_APP_') or die('403 FORBIDDEN');
 
-use Nematrack\Helper\UriHelper;
+use  \Helper\UriHelper;
 use RuntimeException;
 use Throwable;
 
@@ -39,7 +39,7 @@ final class Router
 	 *
 	 * @param   array $options  An array of instantiation options.
 	 *
-	 * @return  mixed   Nematrack\Router if instantiation was successful, or null if not.
+	 * @return  mixed    \Router if instantiation was successful, or null if not.
 	 *
 	 * @throws  RuntimeException if the model could not be loaded.
 	 *
@@ -58,7 +58,7 @@ final class Router
 		if (empty(self::$instances[$signature]))
 		{
 			$className   = basename(str_replace('\\', '/', __CLASS__));
-			$classNameFQ = 'Nematrack\\' . ucfirst(mb_strtolower($className));
+			$classNameFQ = ' \\' . ucfirst(mb_strtolower($className));
 
 			// If the class still doesn't exist we have nothing left to do but throw an exception.  We did our best.
 			if (!class_exists($classNameFQ))

@@ -1,11 +1,11 @@
 <?php
 /* define application namespace */
-namespace Nematrack;
+namespace  ;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
 
-use Nematrack\Helper\FilesystemHelper;
+use  \Helper\FilesystemHelper;
 use RuntimeException;
 use Throwable;
 use function array_pop;
@@ -40,7 +40,7 @@ abstract class BitwiseFlag extends App
 
 	/*
 	 * Note: these functions are protected to prevent outside code from falsely setting BITS.
-	 * See how the extending class {@link Nematrack\Permissions} handles this.
+	 * See how the extending class {@link  \Permissions} handles this.
 	 *
 	 */
 	protected function isFlagSet($flag) : bool
@@ -67,7 +67,7 @@ abstract class BitwiseFlag extends App
 
 /**
  * The class above is abstract and cannot be instantiated, so an extension is required.
- * Below is a simple extension named {@link \Nematrack\Permissions} -- which is severely truncated for clarity.
+ * Below is a simple extension named {@link \ \Permissions} -- which is severely truncated for clarity.
  *
  * Notice I am defining constants, variables AND methods to use them.
  *
@@ -116,7 +116,7 @@ class Access extends BitwiseFlag
 	 * @param   string $name     The name of the desired Access class.
 	 * @param   array  $options  An array of instantiation options.
 	 *
-	 * @return  mixed   Nematrack\Access if instantiation was successful, or null if not.
+	 * @return  mixed    \Access if instantiation was successful, or null if not.
 	 *
 	 * @throws  RuntimeException if the model could not be loaded.
 	 *@since   1.1
@@ -134,7 +134,7 @@ class Access extends BitwiseFlag
 		{
 			// $className    = basename(__CLASS__);
 			$className    = basename(str_replace('\\', '/', __CLASS__));
-			$instanceName = 'Nematrack\\' . $className . '\\' . ucfirst(mb_strtolower($name));
+			$instanceName = ' \\' . $className . '\\' . ucfirst(mb_strtolower($name));
 
 			if (!class_exists($instanceName))
 			{

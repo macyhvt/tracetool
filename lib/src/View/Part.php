@@ -1,6 +1,6 @@
 <?php
 /* define application namespace */
-namespace Nematrack\View;
+namespace  \View;
 
 /* no direct script access */
 defined ('_FTK_APP_') OR die('403 FORBIDDEN');
@@ -9,11 +9,11 @@ use Froetek\Coder\Coder;
 use Joomla\Uri\Uri;
 use Joomla\Utilities\ArrayHelper;
 use JsonException;
-use Nematrack\App;
-use Nematrack\Helper\UriHelper;
-use Nematrack\Messager;
-use Nematrack\Text;
-use Nematrack\View\Item as ItemView;
+use  \App;
+use  \Helper\UriHelper;
+use  \Messager;
+use  \Text;
+use  \View\Item as ItemView;
 use RuntimeException;
 use function class_exists;
 use function is_a;
@@ -25,7 +25,7 @@ use function property_exists;
  */
 class Part extends ItemView
 {
-	use \Nematrack\Traits\View\Part;
+	use \ \Traits\View\Part;
 
 	/**
 	 * {@inheritdoc}
@@ -44,7 +44,7 @@ class Part extends ItemView
 		}
 
 		// Access control. Only registered and authenticated users can view content.
-		if (!is_a($this->user, 'Nematrack\Entity\User'))
+		if (!is_a($this->user, ' \Entity\User'))
 		{
 			$redirect = new Uri($this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language);
 
@@ -61,7 +61,7 @@ class Part extends ItemView
 
 		// Access control. If a user's flags don't satisfy the minimum requirement access is prohibited.
 		// Role "worker" is the minimum requirement to access an entity, whereas the role(s) to access a view may be different.
-		if ($this->user->getFlags() < \Nematrack\Access\User::ROLE_WORKER)
+		if ($this->user->getFlags() < \ \Access\User::ROLE_WORKER)
 		{
 			$redirect = new Uri($this->input->server->getUrl('PHP_SELF') . '?hl=' . $this->language);
 
@@ -99,9 +99,9 @@ class Part extends ItemView
 		}
 
 		// Prepare item for display.
-		if (is_a($item, sprintf('Nematrack\Entity\%s', ucfirst(mb_strtolower($this->get('name'))))) && $item->get('trackingcode'))
+		if (is_a($item, sprintf(' \Entity\%s', ucfirst(mb_strtolower($this->get('name'))))) && $item->get('trackingcode'))
 		{
-			/*// Disabled on 2021-10-27 - code moved to {@see \Nematrack\Entity\Part::getItem()}
+			/*// Disabled on 2021-10-27 - code moved to {@see \ \Entity\Part::getItem()}
 			// This part may be a subcomponent of another part (e.g. a joining part).
 			// Fetch all parts where it might have been combined to.
 			if ($item->isComponent)
@@ -602,7 +602,7 @@ JS;
 		//   NOTE: as of 2022-01-20 we allow multiple codes (think cross-referencing between welded parts or freq. monitoring)
 		$containsTrackingcode = preg_match_all('/' . FTKREGEX_TRACKINGCODE_INLINE . '/', $techparam, $codes);
 
-		$codes = \Nematrack\Helper\ArrayHelper::filterRecursive($codes, null, true);
+		$codes = \ \Helper\ArrayHelper::filterRecursive($codes, null, true);
 		$codes = array_unique($codes, SORT_REGULAR);	/* Hint: The SORT_REGULAR flag prevents array_unique from throwing a
 																	 *       "Array to string conversion" notification in the error log
 																	 * caused by this function comparing elements as strings by default. */
