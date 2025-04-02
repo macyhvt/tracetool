@@ -1,9 +1,8 @@
 # README #
 
-NEMATRACK v3.0
+Parts Tracing v3.0
 ### What is new? ###
-+ Main group-subgroup feature added - 17 June 2024
-
++ Main group-subgroup feature added
 + Frequency feature added
 + Activate and deactivation of process feature added
 + Auto TRUE boolean values on autotrack
@@ -14,7 +13,7 @@ NEMATRACK v3.0
 + Project Filter as per Organisation
 
 
-NEMATRACK v2.10.1
+Parts Tracing v2.10.1
 
 
 ### What is new? ###
