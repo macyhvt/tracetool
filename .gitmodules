@@ -1,0 +1,9 @@
+[submodule "assets/js/vendor/dankogai/js-base64"]
+	path = assets/js/vendor/dankogai/js-base64
+	url = https://github.com/dankogai/js-base64.git
+[submodule "assets/js/vendor/froetek/push-notifications"]
+	path = assets/js/vendor/froetek/push-notifications
+	url = https://froetek@bitbucket.org/froetek-development/push-service.git
+[submodule "lib/vendor/froetek/code-generator"]
+	path = lib/vendor/froetek/code-generator
+	url = https://froetek@bitbucket.org/froetek-development/trackingtool-codgen.git

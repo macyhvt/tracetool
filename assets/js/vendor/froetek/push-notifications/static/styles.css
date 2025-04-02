@@ -1,0 +1,10 @@
+
+p.alert br {
+	line-height: 2rem !important;
+}
+
+@media screen AND (min-width: 576px) {
+	.jumbotron {
+		padding: 3rem 4rem;
+	}
+}

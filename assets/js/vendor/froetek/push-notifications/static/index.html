@@ -1,0 +1,101 @@
+<!Doctype html>
+<html lang="en">
+<head>
+	<!-- More information regarding definition of 'Content-Security-Policy' can be found at 
+			https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src-elem
+			https://developers.google.com/web/fundamentals/security/csp
+	-->
+	<meta http-equiv="Content-Security-Policy" content="connect-src     'self';
+														default-src     'self';
+														img-src         'self';
+	                                                    font-src        'self' https://cdnjs.cloudflare.com;
+														style-src-elem  'self' https://cdnjs.cloudflare.com;
+														script-src-elem 'self' https://cdnjs.cloudflare.com">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FRÖTEK-Kunststofftechnik GmbH &ndash; Push Service</title>
+    <!--link rel="icon" href="https://d2cy1obokpvee9.cloudfront.net/manifest/favicon-196x196.png" type="image/png" sizes="196x196" class="next-head"-->
+	<link rel="shortcut icon" href="favicon.ico" />
+	<!--link rel="apple-touch-icon" href="http://example.com/images/apple-touch-icon.png" /--><!-- iOS will add rounded corners and a reflective shine to your iOS home screen icon. -->
+	<!--link rel="apple-touch-icon-precomposed" href="http://example.com/images/apple-touch-icon.png" /--><!-- If you prefer it without the reflective shine -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.7/css/tether.min.css" integrity="sha256-y4TDcAD4/j5o4keZvggf698Cr9Oc7JZ+gGMax23qmVA=" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<div id="wrapper">
+		<div class="container pt-md-1">
+			<header>
+				<h1>FRÖTEK-Kunststofftechnik GmbH &ndash; Push Service</h1>
+			</header>
+
+			<hr>
+
+			<main>
+				<!-- Section for administrator -->
+				<form class="jumbotron border" id="messageBox" onsubmit="return false;">
+					<fieldset>
+						<legend class="mb-4">Systemnachricht versenden</legend>
+						<p class="alert alert-warning mb-lg-5">
+Wählen Sie die Art der Nachricht, die gesendet werden soll <em class="ml-2 font-weight-bold">(Nachricht, Warnung, Alarm).</em><br>
+Geben Sie die Nachricht ein, die gesendet werden soll.
+						</p>
+						<div id="admin-Form">
+							<input type="hidden" class="form-control" id="user" value="Administrator" />
+							<div class="form-group mb-lg-4">
+								<label for="type">Nachrichtenart: *</label>
+								<select class="form-control" id="type" size="1" required>
+									<option value="">- Wählen -</option>
+									<option value="notification">Mitteilung</option>
+									<option value="warning">Warnung</option>
+									<option value="alert">Alarm</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="message">Nachricht: *</label>
+								<textarea class="form-control" id="message" rows="5" placeholder="Geben Sie hier Ihre Nachricht ein" required></textarea>
+							</div>
+							<button type="button" class="btn btn-info btn-submit float-right" id="btnSubmit" form="messageBox">
+								<span class="d-none d-md-inline mr-md-2">Nachricht senden</span><i class="fas fa-paper-plane"></i>
+							</button>
+						</div>
+					</fieldset>
+				</form>
+			</main>
+
+			<footer>
+			</footer>
+
+			<!-- Section for receivers -->
+			<div class="modal fade" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="mainTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content" id="mainModalContent">
+						<div class="modal-header" id="mainModalHeader">
+							<h4 class="modal-title" id="mainModalTitle">Lade...</h4>
+							<button type="button" class="close" data-dismiss="modal" title="Schließen" aria-label="Schließen">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body"   id="mainModalBody">&hellip;</div>
+						<div class="modal-footer" id="mainModalFooter">
+							<button type="button" class="btn btn-sm btn-default btn-close" data-dismiss="modal" title="Schließen" aria-label="Schließen">Schließen</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.7/js/tether.min.js" integrity="sha256-4lietOiwRDBKx1goZZbRiwB06L+/bPYEGDIKZt82bgg=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha256-fzFFyH01cBVPYzl16KT40wqjhgPtq6FFUB6ckN2+GGw=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js" integrity="sha256-AAhU14J4Gv8bFupUUcHaPQfvrdNauRHMt+S4UVcaJb0=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo=" crossorigin="anonymous"></script>
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js.map"></script-->
+    <script src="client.js"></script>
+</body>
+</html>

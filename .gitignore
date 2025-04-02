@@ -1,0 +1,56 @@
+#*
+#!.gitignore
+
+# IDE & System Related Files #
+.buildpath
+.DS_Store
+.editorconfig
+.env.local
+.env.dev.local
+.env.prod.local
+.htaccess
+.htpasswd
+.idea
+.phpunit.cache
+.project
+.settings
+.vscode
+phpcs.*
+phpstan.*
+psalm.*
+
+# ignore backup directories #
+__TRASH__
+.bak
+.phpdoc
+_bak
+_trash
+
+# ignore cache files, log files and temporary files #
+cache/*
+log/*
+tmp/*
+
+# ignore these directories #
+assets/pdf/
+assets/tools/cronjobs/
+lib/vendor/*/
+rss/
+templates/
+tests/
+
+# ignore these files #
+*.bak
+*.lock
+*.new
+*.orig
+*.tmp
+.php_cs.cache
+.phpunit.result.cache
+/assets/js/vendor/dankogai/js-base64/test/
+/assets/js/vendor/suxumi/bootstrap4dialog/examples/
+/assets/js/vendor/suxumi/bootstrap4dialog/src/
+/lib/composer.phar
+/lib/vendor/autoload.php
+/tmp/
+Configuration.php

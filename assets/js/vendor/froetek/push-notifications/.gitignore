@@ -1,0 +1,24 @@
+#*
+#!.gitignore
+
+# IDE & System Related Files #
+.buildpath
+.DS_Store
+.editorconfig
+.idea
+.project
+.settings
+.vscode
+
+# ignore backup files #
+
+# ignore cache files, log files and temporary files #
+cache/*
+log/*
+tmp/*
+
+# ignore these directories #
+node_modules/*/
+
+# ignore these files #
+*.lock
